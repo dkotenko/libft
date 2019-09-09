@@ -20,11 +20,11 @@ char *strncat (char *dest, const char *app, size_t n)
     i = 0;
 	temp = dest;
 	while(*dest)
-		*(dest++);
+		*dest++;
 	while(i < n)
     {
-		*(dest++) = *(app++);
+		*dest++ = *app++;
         i++;
     }
-	*dest = '\0'
-	return temp;
+	*dest = '\0';
+	return (temp);

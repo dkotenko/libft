@@ -7,8 +7,6 @@ char *strnstr(const char *str, const char *substr, size_t n)
 	char *p;
 	
 	i = 0;
-	if (!substr)
-		return *str;
 	while(str[i] && i < n)
 	{
 		if(str[i] == *substr)
@@ -21,7 +19,7 @@ char *strnstr(const char *str, const char *substr, size_t n)
 				j++;
 			}
 			if(!substr[j])
-				return *p;
+				return p;
 		}
 		i++;
 	}

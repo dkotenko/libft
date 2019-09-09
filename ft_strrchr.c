@@ -15,16 +15,15 @@
 char *strrchr (const char *str, int ch)
 {
 	char *p;
-	int i;
 	unsigned char c;
 	
 	c = (char)ch;
 	p = NULL;
-	while(str[i])
+	while(*str)
 	{
-		if (str[i] == c)
-			p = *(str + i);
-		i++;
+		if (*str == c)
+			p = (char *)str;
+		str++;
 	}
 	return p;
 }
