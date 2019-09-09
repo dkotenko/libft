@@ -7,7 +7,7 @@ void * memmove(void* dst, const void* src, unsigned int n)
 	char *tmp;
 	unsigned int i;
 	char *pDst = (char *)dst;
-	char *pSrc =(const char*)src;
+	char *pSrc =(char *)src;
 	 
 	 
 	tmp = (char *)malloc(sizeof(char ) * n);

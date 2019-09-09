@@ -15,14 +15,18 @@
 int memcmp( const void * memptr1, const void * memptr2, size_t num )
 {
 	size_t i;
+	char *p1;
+	char *p2;
 
+	p1 = (char *)memptr1;
+	p2 = (char *)memptr2;
 	i = 0;
-	while(memptr1[i] && (char )*memptr2[i])
+	while(p1[i] && p2[i] && i < num)
 	{
-		if((char *)memptr1[i] > (char *)memptr2[i])
-			return (char *)memptr1[i] - (char *)memptr2[i];
-		else if ((char *)memptr1[i] < (char *)memptr2[i])
-			return (char *)memptr1[i] - (char *)memptr2[i];
+		if(p1[i] > p2[i])
+			return (pr1[i] - ptr2[i]);
+		else if (p1[i] < pr2[i])
+			return (p1[i] - pr2[i]);
 		i++;
 	}
 	return 0;

@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 char *strlcat (char *dest, const char *app, size_t n)
 {
 	char *temp;

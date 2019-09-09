@@ -16,8 +16,8 @@ char *strcat (char *dest, const char *app)
 	
 	temp = dest;
 	while(*dest)
-		*(dest++);
+		*dest++;
 	while(*app)
-		*(dest++) = *(app++);
+		*dest++ = *app++;
 	*dest = '\0'
-	return temp;
+	return (temp);

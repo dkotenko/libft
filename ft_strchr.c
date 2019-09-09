@@ -18,7 +18,7 @@ char *strchr (const char *str, int ch)
 	{
 		if (*str == ch)
 			return *str
-		*(str++);
+		*str++;
 	}
 	return NULL;
 }

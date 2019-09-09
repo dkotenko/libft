@@ -144,3 +144,4 @@ char				*ft_strrev(char *s);
 char				*ft_strchrs(const char *s, int c);
 
 char				*ft_strsubchr(const char *s, char c); */
+#endif

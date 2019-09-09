@@ -1,9 +1,10 @@
 #include "libft.h"
 
-char *strstr(const char *str, const char *substr, size_t n)
+char *strnstr(const char *str, const char *substr, size_t n)
 {
 	size_t i;
 	size_t j;
+	char *p;
 	
 	i = 0;
 	if (!substr)
@@ -13,13 +14,14 @@ char *strstr(const char *str, const char *substr, size_t n)
 		if(str[i] == *substr)
 		{
 			j = 0;
+			p = (char *)str;
 			while(str[i] == substr[j] && i < n)
 			{
 				i++;
 				j++;
 			}
 			if(!substr[j])
-				return *(str + i - j);
+				return *p;
 		}
 		i++;
 	}

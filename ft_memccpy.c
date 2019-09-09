@@ -3,13 +3,17 @@
 void *memccpy(void *dest, const void *src, int c, size_t n)
 {
 	size_t i;
+	unsigned char d;
+	unsigned char s;
 	
 	i = 0;
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
 	while(i < n)
 	{
-		(unsigned char*)(dest + i) = (unsigned char*)(src + i);
-		if ((unsigned char*)(dest + i) == (unsigned char)c)
-			return ((void*)(dest + i + 1);
+		d[i] = src[i];
+		if (d[i] == (unsigned char)c)
+			return ((void*)(d[i + 1]);
 		i++;
 	}
 	return (NULL);

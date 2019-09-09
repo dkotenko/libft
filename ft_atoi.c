@@ -5,7 +5,7 @@ int ft_atoi (const char *s)
 	
 	n = 0;
 	sign = 0;
-	while(*s && (*s >= 9 && *s <= 13 || *s == ' '))
+	while(*s && ((*s >= 9 && *s <= 13) || *s == ' '))
 		s++;
 	if (*s == '-')
 	{
@@ -14,11 +14,9 @@ int ft_atoi (const char *s)
 	}
 	if (*s == '+')
 		s++;
-	while(*s && *s >= '0' & *s <= '9')
+	while(*s && *s >= '0' && *s <= '9')
 	{
 		n = n * 10 + *s - '0';
 		s++;
 	}
-	return (int(n) * sign);
-	
-		 
+	return (int(n) * sign);	 

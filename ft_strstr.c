@@ -2,24 +2,25 @@
 
 char *strstr(const char *str, const char *substr)
 {
+	int i;
 	int j;
+	char *p;
 	
-	if (!substr)
-		return *str;
-	while(*str)
+	while(str[i])
 	{
-		if(*str == *substr)
+		if(str[i] == substr[0])
 		{
 			j = 0;
-			while(*str == substr[j])
+			p = (char *)str;
+			while(str[i] == substr[j])
 			{
-				str++;
+				i++;
 				j++;
 			}
 			if(!substr[j])
-				return *(str - j);
+				return p;
 		}
-		str++;
+		i++;
 	}
 	return NULL;
 }

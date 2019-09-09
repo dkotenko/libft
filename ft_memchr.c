@@ -14,7 +14,7 @@
 
 void *memchr (const void *arr, int c, size_t n)
 {
-	unsigned char *c;
+	unsigned char *s;
 	size_t i;
 	
 	i = 0;
