@@ -1,39 +1,32 @@
 #include <string.h>
 
-void * Memmove(void* dst, const void* src, unsigned int cnt)
+void * memmove(void* dst, const void* src, unsigned int n)
 {
  
- char *tmp = NULL;
- 
- unsigned int uiLoop = 0;
- 
- char *pszDest = (char *)dst;
- 
- const char *pszSource =( const char*)src;
- 
- //allocate memory for tmp array
- tmp = (char *)malloc(sizeof(char ) * cnt);
- if(NULL == tmp)
- {
- return NULL;
- }
- else
- {
- // copy src to tmp array
- for(uiLoop =0;uiLoop < cnt ; ++uiLoop)
- {
- *(tmp + uiLoop) = *(pszSource + uiLoop);
- }
- 
- //copy tmp to dst
- for(uiLoop =0 ;uiLoop < cnt ; ++uiLoop)
- {
- *(pszDest + uiLoop) = *(tmp + uiLoop);
- }
- 
- free(tmp); //free allocated memory
- }
-  
- return dst;
+	char *tmp;
+	unsigned int i;
+	char *pDst = (char *)dst;
+	char *pSrc =(const char*)src;
+	 
+	 
+	tmp = (char *)malloc(sizeof(char ) * n);
+	if(!tmp)
+		return NULL;
+	else
+	{
+		i = 0;
+		while(i < n)
+		{
+			tmp[i] = pSrc[i];
+			i++;
+		}
+		i = 0;
+		while(i < n)
+		{
+			pDst[i] = tmp[i];
+			i++;
+		}
+		free(tmp);
+		return dst;
+	}
 }
-	

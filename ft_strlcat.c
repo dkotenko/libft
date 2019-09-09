@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 19:53:11 by clala             #+#    #+#             */
-/*   Updated: 2019/09/07 19:59:14 by clala            ###   ########.fr       */
+/*   Created: 2019/09/07 20:13:51 by clala             #+#    #+#             */
+/*   Updated: 2019/09/07 20:19:05 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strncpy(char *str1, char *str2, size_t n)
+char *strlcat (char *dest, const char *app, size_t n)
 {
-	size_t i;
-
-	i = 0;
+	char *temp;
+    size_t i;
+	
+    i = 0;
+	temp = dest;
+	while(*dest)
+		*(dest++);
 	while(i < n)
-	{
-		*(str1++) = *(str2++);
-		i++;
-	}
-	*str1 = '\0';
-	return str1;
-}
-
-
+    {
+		*(dest++) = *(app++);
+        i++;
+    }
+	*dest = '\0'
+	return temp;

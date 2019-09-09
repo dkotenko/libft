@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strcat (char *dest, const char *app, size_t n)
+char *strncat (char *dest, const char *app, size_t n)
 {
 	char *temp;
     size_t i;

@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/07 19:53:11 by clala             #+#    #+#             */
-/*   Updated: 2019/09/07 19:59:14 by clala            ###   ########.fr       */
+/*   Created: 2019/09/03 20:16:56 by clala             #+#    #+#             */
+/*   Updated: 2019/09/03 20:45:18 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strncpy(char *str1, char *str2, size_t n)
+#include <string.h>
+
+int strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t i;
 
 	i = 0;
-	while(i < n)
-	{
-		*(str1++) = *(str2++);
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
 		i++;
-	}
-	*str1 = '\0';
-	return str1;
+	return (s1[i] - s2[i]);
 }
-
-
