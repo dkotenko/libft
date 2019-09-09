@@ -1,6 +1,6 @@
-#include <string.h>
+#include "libft.h"
 
-void bzero(void *s, size_t n)
+void bzero(void *destination, size_t n)
 {
     size_t i;
     char *s;

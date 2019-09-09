@@ -1,4 +1,4 @@
-#include <string.h>
+#include "libft.h"
 
 char *strstr(const char *str, const char *substr, size_t n)
 {

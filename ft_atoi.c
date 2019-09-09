@@ -1,6 +1,7 @@
-int ft_atoi (const char *str)
+int ft_atoi (const char *s)
 {
 	long double n;
+	int sign;
 	
 	n = 0;
 	sign = 0;
@@ -18,6 +19,6 @@ int ft_atoi (const char *str)
 		n = n * 10 + *s - '0';
 		s++;
 	}
-	return (int(n * sign));
+	return (int(n) * sign);
 	
 		 

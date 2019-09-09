@@ -1,4 +1,4 @@
-#include <string.h>
+#include "libft.h"
 
 void *memccpy(void *dest, const void *src, int c, size_t n)
 {
@@ -7,8 +7,8 @@ void *memccpy(void *dest, const void *src, int c, size_t n)
 	i = 0;
 	while(i < n)
 	{
-		((unsigned char*)dest)[i] = ((unsigned char*)src)[i];
-		if ((unsigned char*)dest)[i] == (unsigned char)c)
+		(unsigned char*)(dest + i) = (unsigned char*)(src + i);
+		if ((unsigned char*)(dest + i) == (unsigned char)c)
 			return ((void*)(dest + i + 1);
 		i++;
 	}

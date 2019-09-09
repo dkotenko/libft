@@ -1,4 +1,5 @@
-#include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
 void * memmove(void* dst, const void* src, unsigned int n)
 {

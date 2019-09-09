@@ -1,3 +1,5 @@
+#include "libft.h"
+
 char *strstr(const char *str, const char *substr)
 {
 	int j;
