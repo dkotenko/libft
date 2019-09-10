@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strcat (char *dest, const char *app)
+char *ft_strcat (char *dest, const char *app)
 {
 	char *temp;
 	

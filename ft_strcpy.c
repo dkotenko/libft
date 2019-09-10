@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *strcpy(char *str1, char *str2)
+char *ft_strcpy(char *str1, char *str2)
 {
 	while(*str2)
 	{

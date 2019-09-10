@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char *strrchr (const char *str, int ch)
+char *ft_strrchr (const char *str, int ch)
 {
 	char *p;
 	unsigned char c;
