@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-void * memmove(void* dst, const void* src, unsigned int n)
+void *ft_memmove(void* dst, const void* src, unsigned int n)
 {
  
 	char *tmp;
