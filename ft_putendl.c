@@ -7,7 +7,7 @@ void	ft_putendl(char const *s)
 	i = 0;
 	if (s)
 	{
-		while (s[i] != '\0')
+		while (s[i])
 		{
 			ft_putchar(s[i]);
 			i++;

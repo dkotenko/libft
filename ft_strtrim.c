@@ -27,14 +27,3 @@ char * ft_strtrim(char const *s)
 	}
 	str[ws] = '\0';
 	return(str);
-	
-			
-	
-	
-	
-	
-		
-		
-	
-	
-	
