@@ -15,18 +15,19 @@
 int ft_memcmp( const void * memptr1, const void * memptr2, size_t num )
 {
 	size_t i;
-	char *p1;
-	char *p2;
+	unsigned char *p1;
+	unsigned char *p2;
 
-	p1 = (char *)memptr1;
-	p2 = (char *)memptr2;
+	p1 = (unsigned char *)memptr1;
+	p2 = (unsigned char *)memptr2;
 	i = 0;
 	while(p1[i] && p2[i] && i < num)
 	{
 		if(p1[i] > p2[i])
-			return (pr1[i] - ptr2[i]);
-		else if (p1[i] < pr2[i])
-			return (p1[i] - pr2[i]);
+			return ((int)p1[i] - (int)p2[i]);
+		else if (p1[i] < p2[i])
+			return ((int)p1[i] - (int)p2[i]);
 		i++;
 	}
 	return 0;
+}

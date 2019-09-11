@@ -1,8 +1,10 @@
-t_list * ft_lstnew(void const *content, size_t content_size)
+#include "libft.h"
+
+t_list *ft_lstnew(void const *content, size_t content_size)
 {
 	t_list *listnew;
 	
-	listnew = (t_list*)ft_memalloc(sizeof(t_list))
+	listnew = (t_list*)ft_memalloc(sizeof(t_list));
 	if (!listnew)
 		return (NULL);
 	if (content == NULL)

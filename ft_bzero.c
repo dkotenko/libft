@@ -1,13 +1,13 @@
 #include "libft.h"
 
-void bzero(void *destination, size_t n)
+void ft_bzero(void *dest, size_t n)
 {
     size_t i;
     char *s;
         
-    s = (char *)destination;    
+    s = (char *)dest;    
     i = 0;
-    while (i < n)
+    while (s[i] && i < n)
     {
         s[i] = '\0';
         i++;

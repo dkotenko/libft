@@ -10,14 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char *ft_strcpy(char *str1, char *str2)
+char *ft_strcpy(char *dest, char *src)
 {
-	while(*str2)
+	char *temp;
+
+	temp = dest;
+	while(*src)
 	{
-		*(str1++) = *(str2++);
+		*(temp++) = *(src++);
 	}
-	*str1 = '\0';
-	return str1;
+	*temp = '\0';
+	return dest;
 }
-
-

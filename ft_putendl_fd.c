@@ -9,7 +9,7 @@ void	ft_putendl_fd(char const *s, int fd)
 	{
 		while (s[i])
 		{
-			ft_putchar_fd(s[i], fd);
+			ft_putchar_fd((char)s[i], fd);
 			i++;
 		}
 		ft_putchar_fd('\n', fd);

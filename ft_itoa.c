@@ -42,7 +42,7 @@ char *ft_itoa(int n)
         n /= 10;
         i++;
     }
-    if(sign < 0)
+    if(sign <= 0)
         i++;
 	n = sign;
     s = (char *)malloc(sizeof(char)*i + 1);
@@ -55,14 +55,10 @@ char *ft_itoa(int n)
     }
     if (sign < 0)
         s[i++] = '-';
+    else if (sign == 0)
+    	s[i++] = '0'; 	
+
     s[i] = '\0';
     ft_reverse(s);
     return (s);
-}
-
-int main() {
-  int a = -123;
-  char *s = ft_itoa(a);
-  printf("%s", s);
-  return 0;
 }

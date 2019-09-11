@@ -4,24 +4,26 @@ char *ft_strnstr(const char *str, const char *substr, size_t n)
 {
 	size_t i;
 	size_t j;
-	char *p;
-	
+	char *s;
+
 	i = 0;
-	while(str[i] && i < n)
+	j = 0;
+	if (!*substr)
+		return ((char *)str);
+	while(*str && i < n)
 	{
-		if(str[i] == *substr)
+		if(*str == *substr)
 		{
 			j = 0;
-			p = (char *)str;
-			while(str[i] == substr[j] && i < n)
-			{
-				i++;
-				j++;
-			}
-			if(!substr[j])
-				return p;
+			s = (char *)str;
+			while(substr[j] && str[i++] == substr[j++])
+				;
+			if(!substr[j] || j == n)
+				return (s);
+			i -= j;
 		}
 		i++;
+		*str++;
 	}
 	return NULL;
 }

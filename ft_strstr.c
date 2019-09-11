@@ -6,6 +6,7 @@ char *ft_strstr(const char *str, const char *substr)
 	int j;
 	char *p;
 	
+	i = 0;
 	while(str[i])
 	{
 		if(str[i] == substr[0])

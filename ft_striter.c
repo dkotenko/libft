@@ -1,3 +1,5 @@
+#include "libfh.h"
+
 void ft_striter(char *s, void (*f)(char *))
 {
 	int i;
