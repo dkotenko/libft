@@ -15,15 +15,17 @@
 char *ft_strrchr (const char *str, int ch)
 {
 	char *p;
-	unsigned char c;
-	
-	c = (char)ch;
+
 	p = NULL;
 	while(*str)
 	{
-		if (*str == c)
+		if (*str == ch)
 			p = (char *)str;
 		str++;
 	}
-	return p;
+	if (p)
+		return (p);
+	if (!ch)
+		return ((char *)str);
+	return (NULL);
 }

@@ -1,4 +1,4 @@
-#include "libfh.h"
+#include "libft.h"
 
 char * ft_strmap(char const *s, char (*f)(char))
 {
@@ -10,14 +10,13 @@ char * ft_strmap(char const *s, char (*f)(char))
 		i++;
 	str = (char *)malloc(sizeof(char)* i + 1);
 	if(!str)
-		return NULL
+		return NULL;
 	i = 0;
 	while(s[i])
 	{
-		if (f(s[i]))
-			str[i] = f(s[i]);
+		str[i] = f(s[i]);
 		i++;	
 	}
 	str[i] = '\0';
 	return str;
-	
+}

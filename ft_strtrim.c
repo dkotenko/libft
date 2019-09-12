@@ -1,32 +1,30 @@
-#include "libfh.h"
+#include "libft.h"
 
 char * ft_strtrim(char const *s)
 {
 	int i;
-	int ws;
-	char *str;
 	int j;
-	
-	ws = 0;
+	char *str;
+	int end;
+
+	if (!s)
+		return (NULL);
+	if (!*s)
+		return ((char *)s);
 	i = 0;
-	while(s[i])
-	{
-		if(s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-			ws++;
+	while(s[i] && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
 		i++;
-	}
-	str = ft_strnew(i - ws + 1);	
+	if (!s[i])
+		return (char *)s + i;
+	end = ft_strlen((char *)s) - 1;
+	while(s[end] == ' ' || s[end] == '\n' || s[end] == '\t')
+		end--;
+	str = ft_strnew(end - i + 1);	
 	if (!str)
 		return (NULL);
 	j = 0;
-	ws = 0;
-	while(j<i)
-	{
-		if(s[j] != ' ' || s[j] != '\n' || s[j] != '\t')
-			str[ws++] = s[j++];
-		else
-			j++;
-	}
-	str[ws] = '\0';
+	while(!(i > end))
+		str[j++] = s[i++];
+	str[j] = '\0';
 	return(str);
 }

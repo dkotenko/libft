@@ -34,7 +34,7 @@ char *ft_itoa(int n)
     int sign;
     char *s;
     int i;
-    
+
     i = 0;
     sign = n;
     while(n)
@@ -42,8 +42,10 @@ char *ft_itoa(int n)
         n /= 10;
         i++;
     }
-    if(sign <= 0)
+    if (!(sign > 0))
+	{
         i++;
+	}
 	n = sign;
     s = (char *)malloc(sizeof(char)*i + 1);
 	i = 0;
