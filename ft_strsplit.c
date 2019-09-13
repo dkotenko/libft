@@ -12,6 +12,8 @@ char ** ft_strsplit(char const *s, char c)
 	while(s[i])
 		i++;
 	arr = (char **)malloc(sizeof(char *) * i + 1);
+	if(!arr)
+		return NULL;
 	i = 0;
 	count = 0; 
 	while(s[i])
@@ -20,10 +22,10 @@ char ** ft_strsplit(char const *s, char c)
 			i++;
 		start = i;
 		if (!s[i])
-			return arr;
+			return (char **)arr;
 		while(s[i] && (char)s[i] != c)
 			i++;
-		if (!(arr[count] = ft_strnew(i - start + 1)))
+		if (!(arr[count] = (char *)ft_strnew(i - start + 1)))
 			return NULL;
 		j = 0;
 		while (start < i)

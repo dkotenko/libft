@@ -48,6 +48,8 @@ char *ft_itoa(int n)
 	}
 	n = sign;
     s = (char *)malloc(sizeof(char)*i + 1);
+	if (!s)
+		return NULL;
 	i = 0;
     while(n)        
     {
