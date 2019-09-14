@@ -6,15 +6,15 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:02:13 by clala             #+#    #+#             */
-/*   Updated: 2019/09/13 20:03:22 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/14 13:25:30 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(int c)
+int	ft_isalpha(int c)
 {
 	if (c >= 'A' && c <= 'Z')
 		return (c);
 	if (c >= 'a' && c <= 'z')
 		return (c);
-	return 0;
+	return (0);
 }

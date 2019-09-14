@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:06:30 by clala             #+#    #+#             */
-/*   Updated: 2019/09/13 20:06:45 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/14 12:22:44 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void		ft_bzero(void *dest, size_t n)
 {
 	size_t	i;
 	char	*s;
-		
-	s = (char *)dest;	
+
+	s = (char *)dest;
 	i = 0;
 	while (i < n && s[i])
 	{

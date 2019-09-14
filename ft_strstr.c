@@ -1,34 +1,41 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/14 13:02:59 by clala             #+#    #+#             */
+/*   Updated: 2019/09/14 13:03:01 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char *ft_strstr(const char *str, const char *substr)
+char				*ft_strstr(const char *str, const char *substr)
 {
-	int i;
-	int j;
-	unsigned char *p;
-	unsigned char *st;
-	unsigned char *su;
+	int				i;
+	int				j;
+	unsigned char	*p;
 
-	st = (unsigned char *)str;
-	su = (unsigned char *)substr;
 	i = 0;
-	if (!*su)
-		return ((char *)st);
-
-	while(st[i])
+	if (!*substr)
+		return ((char *)str);
+	while (str[i])
 	{
-		if(st[i] == *su)
+		if (str[i] == *substr)
 		{
 			j = 0;
-			p = st + i;
-			while(su[j] && st[i] == su[j])
+			p = (unsigned char *)str + i;
+			while (substr[j] && str[i] == substr[j])
 			{
 				i++;
 				j++;
 			}
-			if(!su[j])
+			if (!substr[j])
 				return ((char *)p);
 		}
 		i++;
 	}
-	return NULL;
+	return (NULL);
 }

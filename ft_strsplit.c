@@ -1,39 +1,66 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/14 13:43:18 by clala             #+#    #+#             */
+/*   Updated: 2019/09/14 19:04:57 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-char ** ft_strsplit(char const *s, char c)
+static char	**newarr(char *s)
 {
-	int i;
-	int start;
-	char **arr;
-	int count;
-	int j;
-	
+	int		i;
+	char	**arr;
+
+	i = ft_strlen((char *)s);
+	if (!(arr = (char **)malloc(sizeof(char *) * i + 1)))
+		return (NULL);
+	return (arr);
+}
+
+static char	*word_to_array(int start, int end, char *s, char *arrs)
+{
+	int		j;
+
+	if (!(arrs = (char *)ft_strnew(end - start + 1)))
+		return (NULL);
+	j = 0;
+	while (start < end)
+		arrs[j++] = s[start++];
+	arrs[j] = '\0';
+	return (arrs);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	int		i;
+	int		start;
+	char	**arr;
+	int		count;
+
+	if (!(arr = newarr((char *)s)))
+		return (NULL);
 	i = 0;
-	while(s[i])
-		i++;
-	arr = (char **)malloc(sizeof(char *) * i + 1);
-	if(!arr)
-		return NULL;
-	i = 0;
-	count = 0; 
-	while(s[i])
+	count = 0;
+	while (s[i])
 	{
-		while(s[i] && (char)s[i] == c)
+		while (s[i] && (char)s[i] == c)
 			i++;
 		start = i;
 		if (!s[i])
-			return (char **)arr;
-		while(s[i] && (char)s[i] != c)
+			break ;
+		while (s[i] && (char)s[i] != c)
 			i++;
-		if (!(arr[count] = (char *)ft_strnew(i - start + 1)))
-			return NULL;
-		j = 0;
-		while (start < i)
-			arr[count][j++] = s[start++];
-		arr[count++][j] = '\0';
+		arr[count] = word_to_array(start, i, (char *)s, arr[count]);
+		count++;
 	}
-	arr[count] = NULL;
 	if (!arr[0])
-		return NULL;
-	return arr;
+		return (NULL);
+	arr[count] = 0;
+	return (arr);
 }

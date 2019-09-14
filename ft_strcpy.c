@@ -1,12 +1,24 @@
-char *ft_strcpy(char *dest, char *src)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/14 12:41:55 by clala             #+#    #+#             */
+/*   Updated: 2019/09/14 12:41:57 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char		*ft_strcpy(char *dest, char *src)
 {
-	char *temp;
+	char	*temp;
 
 	temp = dest;
-	while(*src)
+	while (*src)
 	{
 		*(temp++) = *(src++);
 	}
 	*temp = '\0';
-	return dest;
+	return (dest);
 }

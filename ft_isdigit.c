@@ -6,13 +6,13 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:03:55 by clala             #+#    #+#             */
-/*   Updated: 2019/09/13 20:03:58 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/14 13:26:09 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(int c)
+int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
-		return (c);	
+		return (c);
 	return (0);
 }

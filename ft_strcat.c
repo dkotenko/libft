@@ -1,13 +1,25 @@
-char *ft_strcat (char *dest, const char *app)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/09/14 12:46:24 by clala             #+#    #+#             */
+/*   Updated: 2019/09/14 12:46:34 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcat(char *dest, const char *app)
 {
-	int i;
-	int j;
-	
+	int	i;
+	int	j;
+
 	i = 0;
 	j = 0;
-	while(dest[i])
+	while (dest[i])
 		i++;
-	while(app[j])
+	while (app[j])
 		dest[i++] = app[j++];
 	dest[i] = '\0';
 	return (dest);
