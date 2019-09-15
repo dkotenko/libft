@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:51:54 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:51:55 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 11:09:10 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	ft_putchar_fd(int c, int fd)
 {
-	write(fd, &c, 1);
+	if (sizeof(c) == 1)
+		write(fd, &c, 1);
+	else if (sizeof(c) == 4)
+		ft_putwchar_fd(fd, c);
 }

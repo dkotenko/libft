@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putwchar.c                                      :+:      :+:    :+:   */
+/*   ft_putwchar_fd.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/15 10:31:49 by clala             #+#    #+#             */
-/*   Updated: 2019/09/15 11:07:03 by clala            ###   ########.fr       */
+/*   Created: 2019/09/15 11:06:24 by clala             #+#    #+#             */
+/*   Updated: 2019/09/15 11:08:32 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	case_four(int c, char *b, int *on)
 	*on = 4;
 }
 
-void		ft_putwchar(int c)
+void		ft_putwchar_fd(int out, int c)
 {
 	int		on;
 	char	s[4];
@@ -61,5 +61,5 @@ void		ft_putwchar(int c)
 			case_four(c, b, &on);
 	}
 	if (on > 0)
-		write(1, &s, on);
+		write(out, &s, on);
 }

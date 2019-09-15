@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:22:49 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 20:21:13 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 11:10:55 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,6 @@ void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_putwchar(int c);
+void				ft_putwchar_fd(int out, int c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:21:36 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:24:02 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 10:51:25 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@ int					ft_memcmp(const void *ptr1, const void *ptr2, size_t num)
 	}
 	if (i == num)
 		return (0);
-	if (*p1 > *p2)
-		return (1);
-	else if (*p1 < *p2)
-		return (-1);
+	else
+		return (*p1 - *p2);
 	return (0);
 }

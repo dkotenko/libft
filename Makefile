@@ -57,7 +57,9 @@ ft_strstr.c \
 ft_strsub.c \
 ft_strtrim.c \
 ft_tolower.c \
-ft_toupper.c
+ft_toupper.c \
+ft_putwchar.c \
+ft_putwchar_fd.c
 
 OBJECTS=ft_atoi.o \
 ft_bzero.o \
@@ -116,7 +118,9 @@ ft_strstr.o \
 ft_strsub.o \
 ft_strtrim.o \
 ft_tolower.o \
-ft_toupper.o 
+ft_toupper.o \
+ft_putwchar.o \
+ft_putwchar_fd.o
  
 INCLUDES=./
 all: $(NAME)

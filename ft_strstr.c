@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:02:59 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:03:01 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 11:01:50 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char				*ft_strstr(const char *str, const char *substr)
 			}
 			if (!substr[j])
 				return ((char *)p);
+			i -= j;
 		}
 		i++;
 	}
