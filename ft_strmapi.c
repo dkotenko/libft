@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:38:34 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:39:33 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 17:27:06 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	unsigned int	i;
 	char			*str;
 
+	if (!(s && f))
+		return (NULL);
 	i = 0;
 	while (s[i])
 		i++;

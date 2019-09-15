@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:43:18 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 19:04:57 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 15:05:45 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ char		**ft_strsplit(char const *s, char c)
 		arr[count] = word_to_array(start, i, (char *)s, arr[count]);
 		count++;
 	}
-	if (!arr[0])
-		return (NULL);
 	arr[count] = 0;
 	return (arr);
 }

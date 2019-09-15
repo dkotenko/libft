@@ -6,17 +6,17 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 20:05:02 by clala             #+#    #+#             */
-/*   Updated: 2019/09/13 20:05:04 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 17:00:25 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isalnum(int c)
 {
 	if (c >= '0' && c <= '9')
-		return (c);
+		return (1);
 	if (c >= 'A' && c <= 'Z')
-		return (c);
+		return (1);
 	if (c >= 'a' && c <= 'z')
-		return (c);
+		return (1);
 	return (0);
 }

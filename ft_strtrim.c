@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:42:19 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:43:02 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 20:19:52 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		*ft_strtrim(char const *s)
 	end = ft_strlen((char *)s) - 1;
 	while (s[end] == ' ' || s[end] == '\n' || s[end] == '\t')
 		end--;
-	str = ft_strnew(end - i + 1);
+	str = ft_strnew((size_t)(end - i + 1));
 	if (!str)
 		return (NULL);
 	j = 0;

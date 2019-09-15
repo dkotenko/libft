@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:22:49 by clala             #+#    #+#             */
-/*   Updated: 2019/09/15 11:10:55 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/15 17:57:56 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int					ft_strcmp(char *s1, char *s2);
 char				*ft_strcpy(char *str1, char *str2);
 char				*ft_strdup(char *src);
 size_t				ft_strlcat (char *dest, const char *app, size_t n);
-int					ft_strlen(char *str);
+size_t				ft_strlen(char *str);
 char				*ft_strncat (char *dest, const char *app, size_t n);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *str1, char *str2, size_t n);
@@ -85,5 +85,8 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_putwchar(int c);
 void				ft_putwchar_fd(int out, int c);
+void				ft_strrev(char *s);
+int					ft_nbrlen(int n);
+int					ft_abs(int n);
 
 #endif
