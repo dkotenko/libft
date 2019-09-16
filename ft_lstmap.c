@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:56:50 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:56:58 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/16 18:47:06 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static void	free_list(t_list *lst)
 {
-	t_list *tmp;
+	t_list	*tmp;
 
 	while (lst)
 	{
 		tmp = lst->next;
 		free(lst->content);
-		lst->content = NULL;		
+		lst->content = NULL;
 		lst->content_size = 0;
 		free(lst->next);
 		lst->next = NULL;
@@ -29,8 +29,7 @@ static void	free_list(t_list *lst)
 	}
 }
 
-
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
 	t_list	*temp;
 	t_list	*newlist;

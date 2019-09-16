@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:43:18 by clala             #+#    #+#             */
-/*   Updated: 2019/09/15 15:05:45 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/16 18:44:49 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static int	count_words(char *s, char c)
 {
-	int i;
-	int counter;
+	int		i;
+	int		counter;
 
 	i = 0;
 	counter = 0;
@@ -24,14 +24,13 @@ static int	count_words(char *s, char c)
 		while (s[i] && s[i] == c)
 			i++;
 		if (!s[i])
-			return counter;
+			return (counter);
 		counter++;
 		while (s[i] && s[i] != c)
 			i++;
 	}
-	return counter;
+	return (counter);
 }
-
 
 static char	**newarr(char *s, char c)
 {
@@ -64,7 +63,7 @@ char		**ft_strsplit(char const *s, char c)
 	char	**arr;
 	int		count;
 
-	if (!(arr = newarr((char *)s, c)))
+	if (!s || !c || !(arr = newarr((char *)s, c)))
 		return (NULL);
 	i = 0;
 	count = 0;

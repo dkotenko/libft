@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:41:15 by clala             #+#    #+#             */
-/*   Updated: 2019/09/15 20:12:25 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/16 18:42:49 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char		*ft_strjoin(char const *s1, char const *s2)
 	char	*str;
 	int		len1;
 	int		len2;
-	
+
 	if (!s1 || !s2)
 		return (NULL);
 	len1 = ft_strlen((char *)s1);

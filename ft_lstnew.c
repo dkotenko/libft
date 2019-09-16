@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:53:12 by clala             #+#    #+#             */
-/*   Updated: 2019/09/14 13:54:09 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/16 19:33:16 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*listnew;
 
+	if (content_size + 1 < content_size)
+		return (NULL);
 	listnew = (t_list*)ft_memalloc(sizeof(t_list));
 	if (!listnew)
 		return (NULL);
