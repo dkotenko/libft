@@ -12,9 +12,27 @@
 
 #include "libft.h"
 
+static void	free_list(t_list *lst)
+{
+	t_list *tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst->content);
+		lst->content = NULL;		
+		lst->content_size = 0;
+		free(lst->next);
+		lst->next = NULL;
+		free(lst);
+		lst = tmp;
+	}
+}
+
+
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	t_list	*buf;
+	t_list	*temp;
 	t_list	*newlist;
 
 	if (!f || !lst)
@@ -23,16 +41,19 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	if (!newlist)
 		return (NULL);
 	newlist = f(lst);
-	buf = newlist;
+	temp = newlist;
 	while (lst->next)
 	{
 		newlist->next = (t_list *)malloc(sizeof(t_list) * 1);
 		if (!newlist->next)
+		{
+			free_list(temp);
 			return (NULL);
+		}
 		newlist->next = f(lst->next);
 		newlist = newlist->next;
 		lst = lst->next;
 	}
 	newlist->next = NULL;
-	return (buf);
+	return (temp);
 }

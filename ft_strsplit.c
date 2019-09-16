@@ -12,12 +12,33 @@
 
 #include "libft.h"
 
-static char	**newarr(char *s)
+static int	count_words(char *s, char c)
+{
+	int i;
+	int counter;
+
+	i = 0;
+	counter = 0;
+	while (s[i])
+	{
+		while (s[i] && s[i] == c)
+			i++;
+		if (!s[i])
+			return counter;
+		counter++;
+		while (s[i] && s[i] != c)
+			i++;
+	}
+	return counter;
+}
+
+
+static char	**newarr(char *s, char c)
 {
 	int		i;
 	char	**arr;
 
-	i = ft_strlen((char *)s);
+	i = count_words((char *)s, c);
 	if (!(arr = (char **)malloc(sizeof(char *) * i + 1)))
 		return (NULL);
 	return (arr);
@@ -43,7 +64,7 @@ char		**ft_strsplit(char const *s, char c)
 	char	**arr;
 	int		count;
 
-	if (!(arr = newarr((char *)s)))
+	if (!(arr = newarr((char *)s, c)))
 		return (NULL);
 	i = 0;
 	count = 0;
