@@ -6,13 +6,13 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:43:18 by clala             #+#    #+#             */
-/*   Updated: 2019/09/16 18:44:49 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/17 22:06:06 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	count_words(char *s, char c)
+static int	words(char const *s, char c)
 {
 	int		i;
 	int		counter;
@@ -32,15 +32,15 @@ static int	count_words(char *s, char c)
 	return (counter);
 }
 
-static char	**newarr(char *s, char c)
+static void	free_arr(char ***arr)
 {
 	int		i;
-	char	**arr;
 
-	i = count_words((char *)s, c);
-	if (!(arr = (char **)malloc(sizeof(char *) * i + 1)))
-		return (NULL);
-	return (arr);
+	i = 0;
+	while (**arr)
+		free(**arr);
+	free(*arr);
+	arr = NULL;
 }
 
 static char	*word_to_array(int start, int end, char *s, char *arrs)
@@ -56,15 +56,12 @@ static char	*word_to_array(int start, int end, char *s, char *arrs)
 	return (arrs);
 }
 
-char		**ft_strsplit(char const *s, char c)
+static int	copy_words(char *s, char c, char **arr)
 {
 	int		i;
 	int		start;
-	char	**arr;
 	int		count;
 
-	if (!s || !c || !(arr = newarr((char *)s, c)))
-		return (NULL);
 	i = 0;
 	count = 0;
 	while (s[i])
@@ -76,9 +73,24 @@ char		**ft_strsplit(char const *s, char c)
 			break ;
 		while (s[i] && (char)s[i] != c)
 			i++;
-		arr[count] = word_to_array(start, i, (char *)s, arr[count]);
-		count++;
+		if (!(arr[count] = word_to_array(start, i, (char *)s, arr[count])))
+		{
+			free_arr(&arr);
+			return (0);
+		}
+		++count;
 	}
 	arr[count] = 0;
+	return (1);
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**arr;
+
+	if (!s || !c || !(arr = (char **)malloc(sizeof(char *) * words(s, c) + 1)))
+		return (NULL);
+	if (!copy_words((char *)s, c, arr))
+		return (NULL);
 	return (arr);
 }
