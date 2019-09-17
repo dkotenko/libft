@@ -50,8 +50,8 @@ static void	free_arr(char ***arr, int count)
 	i = 0;
 	while (i < count)
 		free(*arr[i++]);
-	free(*arr)
-	free(arr)
+	free(*arr);
+	arr = NULL;
 }
 
 static char	*word_to_array(int start, int end, char *s, char *arrs, int count)
