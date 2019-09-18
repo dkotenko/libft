@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:43:18 by clala             #+#    #+#             */
-/*   Updated: 2019/09/17 22:06:06 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/18 20:45:57 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static void	free_arr(char ***arr)
 	int		i;
 
 	i = 0;
-	while (**arr)
-		free(**arr);
+	while (*arr[i])
+		free(*arr[i++]);
 	free(*arr);
 	arr = NULL;
 }

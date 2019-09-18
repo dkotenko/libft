@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *src)
 {
 	char			*dupl;
 	unsigned int	len;
