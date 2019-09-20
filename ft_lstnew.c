@@ -6,7 +6,7 @@
 /*   By: clala <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:53:12 by clala             #+#    #+#             */
-/*   Updated: 2019/09/16 19:33:16 by clala            ###   ########.fr       */
+/*   Updated: 2019/09/20 21:06:10 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ t_list		*ft_lstnew(void const *content, size_t content_size)
 	{
 		listnew->content = malloc(content_size);
 		if (listnew->content == NULL)
+		{
+			free(listnew);
 			return (NULL);
+		}
 		ft_memmove(listnew->content, content, content_size);
 		listnew->content_size = content_size;
 	}
