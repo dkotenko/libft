@@ -1,0 +1,32 @@
+1) function ft_strsplit.c is broken. 
+        Valgrind report: 
+
+r calling PR_SET_PTRACER, vgdb might block
+==13644== Invalid write of size 8
+==13644==    at 0x10A52A: copy_words (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x10A5A6: ft_strsplit (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x10915C: read_size (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x109234: read_map (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108A89: main (in /home/a/Filler/resources/players/clala.filler)
+==13644==  Address 0x522f3f8 is 24 bytes inside a block of size 25 alloc'd
+==13644==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13644==    by 0x10A57E: ft_strsplit (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x10915C: read_size (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x109234: read_map (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108A89: main (in /home/a/Filler/resources/players/clala.filler)
+==13644== 
+==13644== Invalid write of size 8
+==13644==    at 0x10A52A: copy_words (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x10A5A6: ft_strsplit (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x10915C: read_size (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108E8B: initializer (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108F78: read_piece (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108ABD: main (in /home/a/Filler/resources/players/clala.filler)
+==13644==  Address 0x524cde8 is 24 bytes inside a block of size 25 alloc'd
+==13644==    at 0x4C2FB0F: malloc (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==13644==    by 0x10A57E: ft_strsplit (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x10915C: read_size (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108E8B: initializer (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108F78: read_piece (in /home/a/Filler/resources/players/clala.filler)
+==13644==    by 0x108ABD: main (in /home/a/Filler/resources/players/clala.filler)
+==13644== 

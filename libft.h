@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT
+#ifndef LIBFT_H
 
-# define LIBFT
+# define LIBFT_H
 
 # include <string.h>
 # include <stdlib.h>
