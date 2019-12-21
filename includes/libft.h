@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:22:49 by clala             #+#    #+#             */
-/*   Updated: 2019/12/10 18:32:05 by clala            ###   ########.fr       */
+/*   Updated: 2019/12/21 14:16:33 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,5 +170,6 @@ char					*ft_strchrvar(const char *str, char *format, ...);
 char					*ft_strchrset(const char *str, const char *charset);
 int						ft_imaxlen(intmax_t n);
 size_t					ft_uimaxlen(uintmax_t n);
+int						ft_atoi_base(char *str, int base);
 
 #endif

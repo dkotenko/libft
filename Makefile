@@ -6,7 +6,7 @@
 #    By: clala <clala@student.21-school.ru>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/15 16:58:46 by clala             #+#    #+#              #
-#    Updated: 2019/12/15 16:59:01 by clala            ###   ########.fr        #
+#    Updated: 2019/12/21 14:10:50 by clala            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ bint/ft_bintprepr.c \
 bint/ft_bintround.c \
 bint/ft_bintsubtrn.c \
 conversion/ft_atoi.c \
+conversion/ft_atoi_base.c \
 conversion/ft_ctoi.c \
 conversion/ft_dtoa.c \
 conversion/ft_itoa.c \
