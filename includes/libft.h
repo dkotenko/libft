@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:22:49 by clala             #+#    #+#             */
-/*   Updated: 2019/12/21 14:16:33 by clala            ###   ########.fr       */
+/*   Updated: 2019/12/22 18:16:39 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,7 @@ char					*ft_strchrset(const char *str, const char *charset);
 int						ft_imaxlen(intmax_t n);
 size_t					ft_uimaxlen(uintmax_t n);
 int						ft_atoi_base(char *str, int base);
+void					ft_free2dchararr(char ***arr, int rows);
+char					**ft_create2dchararr(int rows, int columns);
 
 #endif

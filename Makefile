@@ -6,13 +6,14 @@
 #    By: clala <clala@student.21-school.ru>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/15 16:58:46 by clala             #+#    #+#              #
-#    Updated: 2019/12/21 14:10:50 by clala            ###   ########.fr        #
+#    Updated: 2019/12/22 18:20:54 by clala            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=libft.a
 
-SRC=bint/ft_bintaddtn.c \
+SRC=arrays/ft_create2dchararr.c \
+bint/ft_bintaddtn.c \
 bint/ft_bintcmp.c \
 bint/ft_bintdivsn.c \
 bint/ft_bintfmt.c \
@@ -54,6 +55,7 @@ math/ft_uimaxtmaxlen.c \
 math/ft_imaxval.c \
 math/ft_imaxlen.c \
 math/ft_uimaxlen.c \
+memory/ft_free2dchararr.c \
 memory/ft_bzero.c \
 memory/ft_free.c \
 memory/ft_memalloc.c \
