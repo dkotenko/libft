@@ -18,7 +18,7 @@ void		ft_free2dchararr(char ***arr, int rows)
 
 	i = 0;
 	while (i < rows)
-		free(*arr[i++]);
+		free((*arr)[i++]);
 	free(*arr);
 	arr = NULL;
 }
