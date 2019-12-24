@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:25:04 by clala             #+#    #+#             */
-/*   Updated: 2019/11/26 20:25:05 by clala            ###   ########.fr       */
+/*   Updated: 2019/12/24 18:33:48 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ static char	*ft_bintround(char *num, int prec)
 		decimals = (ft_strlen(num) - 1) - (decpt - num);
 		if (decimals > prec || prec == 0)
 		{
-			if (ft_ctoi(*(decpt + prec + 1)) > 4 && (ft_ctoi(*(decpt + prec - 1)) % 2))
+			if (ft_ctoi(*(decpt + prec + 1)) > 4 &&
+			(ft_ctoi(*(decpt + prec - 1)) % 2))
 				num = ft_bintaddtn(num, ft_ldtoa(ft_pow(10, -prec), prec));
 		}
 		else
