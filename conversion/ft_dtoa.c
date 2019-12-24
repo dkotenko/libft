@@ -15,7 +15,7 @@
 #define DOUBLE_EXPONENT_WIDTH 11
 #define DOUBLE_MANTISSA_WIDTH 52
 #define DOUBLE_SIZE 64
-#define DOUBLE_EXPONENT_MAX  ((1L << DOUBLE_EXPONENT_WIDTH) - 1)
+#define DOUBLE_EXPONENT_MAX  ((1L << DOUBLE_EXPONENT_WIDTH) - 1 - DOUBLE_BIAS - DOUBLE_MANTISSA_WIDTH)
 #define DOUBLE_BIAS ((1 << (DOUBLE_EXPONENT_WIDTH - 1)) - 1)
 #define DOUBLE_MANTISSA_MASK  4503599627370495U
 #define DOUBLE_IMPLICIT_MANTISSA_BIT (1L << DOUBLE_MANTISSA_WIDTH)
@@ -29,7 +29,7 @@ char			*double_is_exception(double n, t_double t_dbl)
 		str = ft_strdup("0");
 	else if (n != n)
 		str = ft_strdup("nan");
-	else if (t_dbl.exponent == DOUBLE_EXPONENT_MAX && t_dbl.mantissa == 0)
+	else if (t_dbl.exponent == DOUBLE_EXPONENT_MAX && t_dbl.mantissa == DOUBLE_IMPLICIT_MANTISSA_BIT)
 	{
 		if (t_dbl.sign)
 			str = ft_strdup("-inf");
