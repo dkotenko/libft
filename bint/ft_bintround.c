@@ -24,7 +24,7 @@ static char	*ft_bintround(char *num, int prec)
 		decimals = (ft_strlen(num) - 1) - (decpt - num);
 		if (decimals > prec || prec == 0)
 		{
-			if (ft_ctoi(*(decpt + prec + 1)) > 4)
+			if (ft_ctoi(*(decpt + prec + 1)) > 4 && (ft_ctoi(*(decpt + prec - 1)) % 2))
 				num = ft_bintaddtn(num, ft_ldtoa(ft_pow(10, -prec), prec));
 		}
 		else
