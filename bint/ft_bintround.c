@@ -12,13 +12,23 @@
 
 #include "libft.h"
 
-int is_banking_rounding(char *decimal, int prec)
-{
-	if (decimal[prec + 1] == 5)
-	{
-		if (decimal[prec] == '.' && !(ft_ctoi(decimal[prec - 1]) % 2))
+int			is_banking_rounding(char *decimal, int prec)
+{	
+	int		i;
+		
+	if (ft_ctoi(decimal[prec + 1]) == 5)
+	{		
+		i = 1;		
+		while (decimal[prec + 1 + i])
+		{
+			if (ft_ctoi(decimal[prec + 1 + i++]) > 0)
+				return (1);
+			if (i > 14)
+				break;
+		}			
+		if (decimal[prec] == '.' && ft_ctoi(decimal[prec - 1]) % 2)
 			return (1);
-		else if (!(ft_ctoi(decimal[prec] % 2)))
+		else if (ft_ctoi(decimal[prec] % 2))
 			return (1);
 	}
 	return (0);
@@ -33,11 +43,13 @@ static char	*ft_bintround(char *num, int prec)
 	prec = (prec >= 0) ? prec : 6;
 	if ((decpt = ft_strchr(num, '.')))
 	{
+		ft_putstr(num);
+		ft_putchar('\n');
 		decimals = (ft_strlen(num) - 1) - (decpt - num);
 		if (decimals > prec || prec == 0)
 		{
 			if (is_banking_rounding(decpt, prec) ||
-			ft_ctoi(*(decpt + prec + 1)) > 4)			
+			ft_ctoi(*(decpt + prec + 1)) > 5)			
 				num = ft_bintaddtn(num, ft_ldtoa(ft_pow(10, -prec), prec));
 		}
 		else
