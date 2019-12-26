@@ -6,26 +6,26 @@
 /*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:25:04 by clala             #+#    #+#             */
-/*   Updated: 2019/12/24 18:33:48 by clala            ###   ########.fr       */
+/*   Updated: 2019/12/26 17:21:32 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 int			is_banking_rounding(char *decimal, int prec)
-{	
+{
 	int		i;
-		
+
 	if (ft_ctoi(decimal[prec + 1]) == 5)
-	{		
-		i = 1;		
+	{
+		i = 1;
 		while (decimal[prec + 1 + i])
 		{
 			if (ft_ctoi(decimal[prec + 1 + i++]) > 0)
 				return (1);
 			if (i > 14)
-				break;
-		}			
+				break ;
+		}
 		if (decimal[prec] == '.' && ft_ctoi(decimal[prec - 1]) % 2)
 			return (1);
 		else if (ft_ctoi(decimal[prec] % 2))
@@ -49,7 +49,7 @@ static char	*ft_bintround(char *num, int prec)
 		if (decimals > prec || prec == 0)
 		{
 			if (is_banking_rounding(decpt, prec) ||
-			ft_ctoi(*(decpt + prec + 1)) > 5)			
+					ft_ctoi(*(decpt + prec + 1)) > 5)
 				num = ft_bintaddtn(num, ft_ldtoa(ft_pow(10, -prec), prec));
 		}
 		else
