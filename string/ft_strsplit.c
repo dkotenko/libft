@@ -88,7 +88,7 @@ char		**ft_strsplit(char const *s, char c)
 {
 	char	**arr;
 
-	if (!s || !c || !(arr = (char **)malloc(sizeof(char *) * words(s, c) + 1)))
+	if (!s || !c || !(arr = (char **)malloc(sizeof(char *) * (words(s, c) + 1))))
 		return (NULL);
 	if (!copy_words((char *)s, c, arr))
 		return (NULL);
