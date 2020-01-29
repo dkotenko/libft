@@ -12,13 +12,14 @@
 
 #include "libft.h"
 
-void		ft_free2dchararr(char ***arr, int rows)
+int			ft_free2dchararr(char **arr, int rows)
 {
 	int		i;
 
 	i = 0;
 	while (i < rows)
-		free((*arr)[i++]);
-	free(*arr);
+		free(arr[i++]);
+	free(arr);
 	arr = NULL;
+	return (1);
 }

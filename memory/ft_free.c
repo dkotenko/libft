@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void		ft_free(char *format, ...)
+int			ft_free(char *format, ...)
 {
 	int		n;
 	char	*s;
@@ -26,4 +26,5 @@ void		ft_free(char *format, ...)
 		free((void *)s);
 	}
 	va_end(ap);
+	return (1);
 }
