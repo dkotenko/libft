@@ -8,6 +8,7 @@ t_dlist_node		*t_dlist_node_new(void *data)
 	new->data = data;
 	new->prev = NULL;
 	new->next = NULL;
+	new->size = 0;
 	return (new);
 }
 
