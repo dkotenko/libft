@@ -1,6 +1,6 @@
 #include "dlist.h"
 
-t_dlist		*t_dlist_new(void *data)
+t_dlist		*t_dlist_new(void)
 {
 	t_dlist	*new;
 

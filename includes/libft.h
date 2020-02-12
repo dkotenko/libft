@@ -20,6 +20,9 @@
 # include <stdint.h>
 # include <stdarg.h>
 
+# include "./get_next_line.h"
+# include "./dlist.h"
+
 # define HEX_CHARS "0123456789ABCDEF"
 
 typedef struct			s_list

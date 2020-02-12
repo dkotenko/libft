@@ -26,7 +26,7 @@ t_dlist_node		*t_dlist_insert_before(t_dlist *list,
 						t_dlist_node *node, t_dlist_node *new);
 t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new);
 t_dlist_node		*t_dlist_append(t_dlist *list, t_dlist_node *new);
-t_dlist				*t_dlist_new(void *data);
+t_dlist				*t_dlist_new();
 t_dlist_node		*t_dlist_pop(t_dlist *list, t_dlist_node *node);
 t_dlist				*t_dlist_remove_node(t_dlist *list, t_dlist_node *node);
 
