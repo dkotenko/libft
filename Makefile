@@ -116,7 +116,9 @@ string/ft_strupr.c \
 string/ft_tolower.c \
 string/ft_toupper.c \
 string/ft_strchrset.c \
-string/ft_strchrvar.c
+string/ft_strchrvar.c \
+dlist/dlist.c \
+dlist/dlist_node.c
 
 HEAD=includes/libft.h \
 	includes/get_next_line.h
