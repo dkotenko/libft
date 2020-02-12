@@ -179,6 +179,7 @@ char					**ft_create2dchararr(int rows, int columns);
 int						*ft_intarrnew(int size);
 int						**ft_intmatrixnew(int rows, int columns);
 char					**ft_strarrnew(int x, int y);
+int						free_2dchararr_terminated(char **arr);
 
 
 #endif
