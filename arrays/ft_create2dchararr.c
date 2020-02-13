@@ -24,7 +24,7 @@ char		**ft_create2dchararr(int rows, int columns)
 	{
 		if (!(new[i] = ft_strnew(columns)))
 		{
-			ft_free2dchararr(&new, i);
+			ft_free2dchararr(new, i);
 			return (NULL);
 		}
 		i++;

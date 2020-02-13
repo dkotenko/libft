@@ -20,5 +20,6 @@ int		free_2dchararr_terminated(char **arr)
 	while (arr[i])
 		free(arr[i++]);
 	free(arr[i]);
-	free(*arr);	
+	free(*arr);
+	return (1);
 }

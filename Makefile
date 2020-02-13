@@ -118,7 +118,8 @@ string/ft_toupper.c \
 string/ft_strchrset.c \
 string/ft_strchrvar.c \
 dlist/dlist.c \
-dlist/dlist_node.c
+dlist/dlist_node.c \
+memory/free2dchararr_terminated.c
 
 HEAD=includes/libft.h \
 	includes/get_next_line.h

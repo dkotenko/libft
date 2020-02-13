@@ -14,8 +14,8 @@ typedef struct			g_dlist_node
 
 typedef struct			g_dlist
 {
-	struct g_dlist		*head;
-	struct g_dlist		*tail;
+	struct g_dlist_node	*head;
+	struct g_dlist_node	*tail;
 	int					size;
 }						t_dlist;
 
