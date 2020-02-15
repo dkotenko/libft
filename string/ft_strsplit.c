@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:43:18 by clala             #+#    #+#             */
-/*   Updated: 2019/11/26 20:27:04 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/15 21:56:46 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ char		**ft_strsplit(char const *s, char c)
 {
 	char	**arr;
 
-	if (!s || !c || !(arr = (char **)malloc(sizeof(char *) * (words(s, c) + 1))))
+	if (!s || !c || !(arr = (char **)malloc(sizeof(char *) *
+		(words(s, c) + 1))))
 		return (NULL);
 	if (!copy_words((char *)s, c, arr))
 		return (NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ldtoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:28:29 by clala             #+#    #+#             */
-/*   Updated: 2019/12/08 11:34:33 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/15 22:11:08 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,18 @@
 #define BIAS          16383
 #define LDBL_MANT_WIDTH 63
 #define MAX15BITS       0x7FFF
-#define LDBL_EXPONENT_MAX  (MAX15BITS - BIAS - LDBL_MANT_WIDTH)
 #define LDBL_MASK         9223372036854775808u
 
 static char			*ldouble_is_exception(t_long_double num)
 {
 	char			*str;
+	int				ldbl_exponent_max;
 
+	ldbl_exponent_max = (MAX15BITS - BIAS - LDBL_MANT_WIDTH);
 	str = NULL;
-	if (num.exponent == LDBL_EXPONENT_MAX && num.mantissa != LDBL_MASK)
+	if (num.exponent == ldbl_exponent_max && num.mantissa != LDBL_MASK)
 		str = ft_strdup("nan");
-	else if (num.exponent == LDBL_EXPONENT_MAX && num.mantissa == LDBL_MASK)
+	else if (num.exponent == ldbl_exponent_max && num.mantissa == LDBL_MASK)
 	{
 		if (num.sign)
 			str = ft_strdup("-inf");

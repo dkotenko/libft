@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free2dchararr.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:43:37 by clala             #+#    #+#             */
-/*   Updated: 2019/12/22 18:16:02 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/15 21:57:57 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int			ft_free2dchararr(char **arr, int rows)
 	i = 0;
 	while (i < rows)
 		free(arr[i++]);
-	free(arr);	
+	free(arr);
 	return (1);
 }

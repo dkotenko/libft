@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlist.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 22:07:25 by clala             #+#    #+#             */
+/*   Updated: 2020/02/15 22:08:59 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DLIST_H
 # define DLIST_H
 
 # include <string.h>
 # include <stdlib.h>
 
-typedef struct			g_dlist_node
+typedef struct			s_dlist_node
 {
-	struct g_dlist_node	*next;
-	struct g_dlist_node	*prev;	
+	struct s_dlist_node	*next;
+	struct s_dlist_node	*prev;
 	void				*data;
 	int					*data_size;
 }						t_dlist_node;
 
-typedef struct			g_dlist
+typedef struct			s_dlist
 {
-	struct g_dlist_node	*head;
-	struct g_dlist_node	*tail;
+	struct s_dlist_node	*head;
+	struct s_dlist_node	*tail;
 	int					size;
 }						t_dlist;
 
