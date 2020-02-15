@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:28:14 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 23:31:26 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/15 23:45:15 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ char			*double_is_exception(double n, t_double t_dbl)
 char			*ft_dtoa(double n, int precision)
 {
 	t_double	num;
-	char		*str;	
+	char		*str;
 	int			double_exponent_max;
 
-	double_exponent_max = (2048 - 1 - 
+	double_exponent_max = (2048 - 1 -
 		((1 << (DOUBLE_EXPONENT_WIDTH - 1)) - 1) - MANT_WID);
 	num.sign = *(uintmax_t *)&n >> (DOUBLE_SIZE - 1);
 	num.exponent = (short)((*(uintmax_t *)&n << 1 >> (MANT_WID
 			+ 1)) - ((1 << (DOUBLE_EXPONENT_WIDTH - 1)) - 1) - MANT_WID);
 	num.mantissa = ((*(uintmax_t *)&n & 4503599627370495U) | (1L << MANT_WID));
-	str = NULL;	
+	str = NULL;
 	if ((str = double_is_exception(n, num)))
 		return (str);
 	else
@@ -68,6 +68,6 @@ char			*ft_dtoa(double n, int precision)
 			while (num.exponent++ < 0)
 				str = ft_bintdivsn(str, 2);
 	}
-	str = ft_bintroundfree(str, ((precision >= 0) ? precision : 6), 1);	
+	str = ft_bintroundfree(str, ((precision >= 0) ? precision : 6), 1);
 	return ((num.sign) ? ft_strjoinfree("-", str, 0, 1) : str);
 }
