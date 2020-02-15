@@ -43,8 +43,6 @@ static char	*ft_bintround(char *num, int prec)
 	prec = (prec >= 0) ? prec : 6;
 	if ((decpt = ft_strchr(num, '.')))
 	{
-		ft_putstr(num);
-		ft_putchar('\n');
 		decimals = (ft_strlen(num) - 1) - (decpt - num);
 		if (decimals > prec || prec == 0)
 		{
