@@ -66,6 +66,7 @@ memory/ft_memcpy.c \
 memory/ft_memdel.c \
 memory/ft_memmove.c \
 memory/ft_memset.c \
+memory/free2dchararr_terminated.c \
 print/ft_putchar.c \
 print/ft_putchar_fd.c \
 print/ft_putendl.c \
@@ -119,7 +120,16 @@ string/ft_strchrset.c \
 string/ft_strchrvar.c \
 dlist/dlist.c \
 dlist/dlist_node.c \
-memory/free2dchararr_terminated.c
+ft_printf/ft_printf.c \
+ft_printf/ft_printf_cspr.c \
+ft_printf/ft_printf_diouxxb_printer.c \
+ft_printf/ft_printf_f.c \
+ft_printf/ft_printf_diouxxb.c \
+ft_printf/ft_printf_handle_format.c \
+ft_printf/ft_printf_select_spec.c \
+ft_printf/ft_printf_r.c \
+ft_printf/t_buf.c \
+ft_printf/ft_vprintf.c \
 
 HEAD=includes/libft.h \
 	includes/get_next_line.h
