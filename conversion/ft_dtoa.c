@@ -47,10 +47,7 @@ char			*ft_dtoa(double n, int precision)
 {
 	t_double	num;
 	char		*str;
-	int			double_exponent_max;
 
-	double_exponent_max = (2048 - 1 -
-		((1 << (DOUBLE_EXPONENT_WIDTH - 1)) - 1) - MANT_WID);
 	num.sign = *(uintmax_t *)&n >> (DOUBLE_SIZE - 1);
 	num.exponent = (short)((*(uintmax_t *)&n << 1 >> (MANT_WID
 			+ 1)) - ((1 << (DOUBLE_EXPONENT_WIDTH - 1)) - 1) - MANT_WID);
