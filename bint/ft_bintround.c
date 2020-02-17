@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bintround.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:25:04 by clala             #+#    #+#             */
-/*   Updated: 2019/12/26 17:21:32 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/15 21:53:21 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ static char	*ft_bintround(char *num, int prec)
 	prec = (prec >= 0) ? prec : 6;
 	if ((decpt = ft_strchr(num, '.')))
 	{
-		ft_putstr(num);
-		ft_putchar('\n');
 		decimals = (ft_strlen(num) - 1) - (decpt - num);
 		if (decimals > prec || prec == 0)
 		{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 13:22:49 by clala             #+#    #+#             */
-/*   Updated: 2019/12/22 18:16:39 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/15 21:57:12 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,5 @@ int						*ft_intarrnew(int size);
 int						**ft_intmatrixnew(int rows, int columns);
 char					**ft_strarrnew(int x, int y);
 int						free_2dchararr_terminated(char **arr);
-
 
 #endif

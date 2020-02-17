@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlist_node.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
+/*   Updated: 2020/02/15 22:06:46 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "dlist.h"
 
 t_dlist_node		*t_dlist_node_new(void *data)
@@ -13,10 +25,11 @@ t_dlist_node		*t_dlist_node_new(void *data)
 }
 
 /*
- * Add new node and set it to go the given pointer
- */
+** Add new node and set it to go the given pointer
+*/
 
-t_dlist_node	*t_dlist_insert_after(t_dlist *list, t_dlist_node *node, t_dlist_node *new)
+t_dlist_node		*t_dlist_insert_after(t_dlist *list,
+t_dlist_node *node, t_dlist_node *new)
 {
 	new->prev = node;
 	if (!node->next)
@@ -31,10 +44,11 @@ t_dlist_node	*t_dlist_insert_after(t_dlist *list, t_dlist_node *node, t_dlist_no
 	return (new);
 }
 
-t_dlist_node	*t_dlist_insert_before(t_dlist *list, t_dlist_node *node, t_dlist_node *new)
+t_dlist_node		*t_dlist_insert_before(t_dlist *list,
+t_dlist_node *node, t_dlist_node *new)
 {
 	new->next = node;
-	if (!node->prev)	
+	if (!node->prev)
 		list->head = new;
 	else
 	{
@@ -46,26 +60,25 @@ t_dlist_node	*t_dlist_insert_before(t_dlist *list, t_dlist_node *node, t_dlist_n
 	return (new);
 }
 
-
 /*
- * add to the front of list
- */
+** add to the front of list
+*/
 
-t_dlist_node	*t_dlist_push(t_dlist *list, t_dlist_node *new)
+t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
 {
 	if (!list->head)
 	{
 		list->head = new;
-		list->tail = new;		
+		list->tail = new;
 	}
 	else
 	{
 		t_dlist_insert_before(list, list->head, new);
 	}
-	return (new);	
+	return (new);
 }
 
-t_dlist_node	*t_dlist_append(t_dlist *list, t_dlist_node *new)
+t_dlist_node		*t_dlist_append(t_dlist *list, t_dlist_node *new)
 {
 	if (!list->tail)
 		t_dlist_push(list, new);
