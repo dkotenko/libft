@@ -12,54 +12,7 @@
 
 #include "libft.h"
 
-static void	case_two(int c, char *b, int *on)
-{
-	*b++ = 192 + c / 64;
-	*b++ = 128 + c % 64;
-	*on = 2;
-}
-
-static void	case_three(int c, char *b, int *on)
-{
-	*b++ = 224 + c / 4096;
-	*b++ = 128 + c / 64 % 64;
-	*b++ = 128 + c % 64;
-	*on = 3;
-}
-
-static void	case_four(int c, char *b, int *on)
-{
-	*b++ = 240 + c / 262144;
-	*b++ = 128 + c / 4096 % 64;
-	*b++ = 128 + c / 64 % 64;
-	*b++ = 128 + c % 64;
-	*on = 4;
-}
-
 void		ft_putwchar(int c)
 {
-	int		on;
-	char	s[4];
-	char	*b;
-
-	on = 0;
-	b = &s[0];
-	if (sizeof(c) == 4)
-	{
-		if (c < 0x80)
-		{
-			*b++ = c;
-			on = 1;
-		}
-		else if (c < 0x800)
-			case_two(c, b, &on);
-		else if (c - 0xd800u < 0x800)
-			return ;
-		else if (c < 0x10000)
-			case_three(c, b, &on);
-		else if (c < 0x110000)
-			case_four(c, b, &on);
-	}
-	if (on > 0)
-		write(1, &s, on);
+	ft_putwchar_fd(1, c);
 }
