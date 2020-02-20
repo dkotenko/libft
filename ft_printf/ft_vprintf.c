@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprintf.c                                      :+:      :+:    :+:   */
+/*   ft_vprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:46:14 by clala             #+#    #+#             */
-/*   Updated: 2019/11/28 22:01:03 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/20 18:58:32 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	print_format(const char *format, va_list *ap, int *i)
 {
@@ -54,7 +54,7 @@ int			ft_vdprintf(int fd, const char *format, va_list *ap)
 	int		flag_to_print;
 	int		written;
 
-	initializer(&i, &flag_to_print, &format_len, format);	
+	initializer(&i, &flag_to_print, &format_len, format);
 	while (format[i] && i < format_len)
 	{
 		while (format[i] != '%')
@@ -81,7 +81,7 @@ int			ft_vasprintf(char **s, const char *format, va_list *ap)
 	int		format_len;
 	int		flag_to_print;
 
-	initializer(&i, &flag_to_print, &format_len, format);	
+	initializer(&i, &flag_to_print, &format_len, format);
 	while (format[i] && i < format_len)
 	{
 		while (format[i] != '%')

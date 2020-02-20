@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_f.c                                         :+:      :+:    :+:   */
+/*   ft_printf_f.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:46:33 by clala             #+#    #+#             */
-/*   Updated: 2019/11/27 21:07:10 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/20 19:01:48 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static	int		is_spec_val(char *s, int flag)
 {
@@ -20,10 +20,10 @@ static	int		is_spec_val(char *s, int flag)
 	ft_strstr(s, "nan")))
 		return (1);
 	else if (flag == 'i' && ft_strstr(s, "inf"))
-		return (1); 
+		return (1);
 	else if (flag == 'n' && ft_strstr(s, "nan"))
 		return (1);
-	return (0);	
+	return (0);
 }
 
 static void		f_exceptions(char *s)
@@ -33,13 +33,10 @@ static void		f_exceptions(char *s)
 	g_v.g_sign = s[0] == '-' ? '-' : g_v.g_sign;
 	g_v.g_sign = is_spec_val(s, 'n') ? 0 : g_v.g_sign;
 	g_v.g_sign_len = g_v.g_sign ? 1 : 0;
-	g_v.width_sign = g_v.zero_sign ? '0' : ' ';	
+	g_v.width_sign = g_v.zero_sign ? '0' : ' ';
 	g_v.width_sign = is_spec_val(s, 'n' | 'i') ? ' ' : g_v.width_sign;
 	g_v.precis = is_spec_val(s, 'n' | 'i') ? 0 : g_v.precis;
-	
 }
-
-
 
 static void		print_left_adjusted(char *s, int len)
 {

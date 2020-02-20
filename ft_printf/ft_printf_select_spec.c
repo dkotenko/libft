@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   select_size_spec.c                                 :+:      :+:    :+:   */
+/*   ft_printf_select_spec.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:48:10 by clala             #+#    #+#             */
-/*   Updated: 2019/11/27 21:03:50 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/20 19:03:21 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
-int		select_size_spec(const char *format, int *i)
+int			select_size_spec(const char *format, int *i)
 {
-	int	j;
-	int	len_size_spec;
+	int		j;
+	int		len_size_spec;
 
 	len_size_spec = 0;
 	j = *i + g_v.len_format + 1;
@@ -51,7 +51,7 @@ int			select_type_spec(const char *format, int *i)
 	return (len_type_spec);
 }
 
-int	f_set_globals_default(void)
+int			f_set_globals_default(void)
 {
 	g_v.plus_sign = 0;
 	g_v.space_sign = 0;

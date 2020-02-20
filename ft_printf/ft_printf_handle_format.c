@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_format.c                                    :+:      :+:    :+:   */
+/*   ft_printf_handle_format.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:46:18 by clala             #+#    #+#             */
-/*   Updated: 2019/11/27 21:04:50 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/20 18:53:04 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static int	select_width(const char *format, va_list *ap, int *i)
 {

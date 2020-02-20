@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_cspr.c                                      :+:      :+:    :+:   */
+/*   ft_printf_cspr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:46:22 by clala             #+#    #+#             */
-/*   Updated: 2019/11/28 21:59:45 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/20 18:59:05 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 static void	printf_s(va_list *ap)
 {

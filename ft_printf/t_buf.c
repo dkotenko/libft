@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_buf_add_size.c                                   :+:      :+:    :+:   */
+/*   t_buf.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clala <clala@student.21-school.ru>         +#+  +:+       +#+        */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:48:19 by clala             #+#    #+#             */
-/*   Updated: 2019/11/26 20:48:20 by clala            ###   ########.fr       */
+/*   Updated: 2020/02/20 18:58:17 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../includes/ft_printf.h"
 
 void		t_buf_add_size(t_buf *buf)
 {
@@ -42,13 +42,13 @@ t_buf		*t_buf_create(int size)
 	return (buf);
 }
 
-void	t_buf_free(t_buf **buf)
+void		t_buf_free(t_buf **buf)
 {
 	free((*buf)->s);
 	free(*buf);
 }
 
-int	t_buf_len(char *s)
+int			t_buf_len(char *s)
 {
 	size_t len;
 
@@ -67,7 +67,7 @@ int	t_buf_len(char *s)
 	return (ft_strlen(s));
 }
 
-int		t_buf_write(t_buf *buf, const char *str, int len)
+int			t_buf_write(t_buf *buf, const char *str, int len)
 {
 	int	i;
 
