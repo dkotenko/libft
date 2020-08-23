@@ -39,6 +39,7 @@ ctype/ft_isalpha.c \
 ctype/ft_isascii.c \
 ctype/ft_isdigit.c \
 ctype/ft_isprint.c \
+ctype/ft_isinteger.c \
 files/get_next_line.c \
 list/ft_lstadd.c \
 list/ft_lstadd.o \

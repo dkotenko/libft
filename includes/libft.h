@@ -108,6 +108,7 @@ int						ft_isalpha(int c);
 int						ft_isascii(int c);
 int						ft_isdigit(int c);
 int						ft_isprint(int c);
+int						ft_isinteger(char *s);
 void					*ft_memccpy(void *dest, const void *src,
 							int c, size_t n);
 void					*ft_memchr (const void *arr, int c, size_t n);
