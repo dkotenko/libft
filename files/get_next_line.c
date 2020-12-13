@@ -73,7 +73,6 @@ int				get_next_line(int const fd, char **line)
 		*line = fd_arr[fd];
 		fd_arr[fd] = NULL;
 	}
-	if (!r && !fd_arr[fd] && *line[0] == '\0')
-		ft_strdel(line);
+	!r && !fd_arr[fd] && *line[0] == '\0' ? ft_strdel(line) : 0;
 	return (*line ? 1 : 0);
 }
