@@ -41,7 +41,8 @@ t_htable		*t_htable_resize(t_htable *table)
 int				t_htable_add(t_htable **table, void *key, void *value)
 {
 	int			i;
-	int			hash;
+	t_hash		hash;
+	t_hash		size;
 	
 	if ((*table)->counter >= (*table)->size / 2)
 	{
@@ -49,7 +50,8 @@ int				t_htable_add(t_htable **table, void *key, void *value)
 	}
 	hash = (*table)->hash(key, (*table)->size);
 	i = 0;
-	while (i + hash < (*table)->real_size)
+	size = (*table)->real_size;
+	while (i + hash < size)
 	{
 		if (!(*table)->table[hash + i])
 		{

@@ -144,9 +144,11 @@ OBJ=$(SRC:.c=.o)
 INCLUDES=-I./includes
 
 CC=gcc -Wall -Wextra -Werror
-A = $(find . -type f | wc -l)
-X = 1
+
 all: $(NAME)
+
+multi:
+	$(MAKE) -j8 all
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)  

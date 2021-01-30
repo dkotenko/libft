@@ -12,16 +12,16 @@
 
 #include "../includes/t_htable.h"
 
-int					t_htable_find(t_htable *table, void *key)
+t_hash				t_htable_find(t_htable *table, void *key)
 {
-	int				hash;
-	int				i;
+	t_hash			hash;
+	t_hash			i;
+	t_hash			size;
 
+	size = table->real_size;
 	hash = table->hash(key, table->size);
-	if (!table->table[hash])
-		return (0);
 	i = 0;
-	while (hash + i < table->real_size)
+	while (table->table[hash] && hash + i < size)
 	{
 		if (!table->cmp(table->table[hash + i], key))
 			return (hash + i);
@@ -39,7 +39,7 @@ int					t_htable_contains(t_htable *table, void *key)
 
 void				*t_htable_get(t_htable *table, void *key)
 {
-	int				hash;
+	t_hash			hash;
 
 	hash = t_htable_find(table, key);
 	if (!hash)
@@ -49,7 +49,7 @@ void				*t_htable_get(t_htable *table, void *key)
 
 int					t_htable_remove(t_htable **table, void *key)
 {
-	int				hash;
+	t_hash			hash;
 
 	if (!(hash = t_htable_find(*table, key)))
 		return (0);

@@ -44,10 +44,10 @@ unsigned int			hash_func_fnv_1a_32(void *key, int len)
    return h;
 }
 
-int						hash_func_kernighan_ritchie(const void *p, int size)
+unsigned int			hash_func_kernighan_ritchie(const void *p, int size)
 {
 	int					i;
-	intmax_t			hash;
+	uintmax_t			hash;
 	int					len;
 	const char			*s;
 
@@ -57,8 +57,8 @@ int						hash_func_kernighan_ritchie(const void *p, int size)
 	i = 0;
 	while (i < len)
 	{
-		hash *= (((hash * (intmax_t)INIT_PRIME_NUMBER)
-			+ (intmax_t)s[i]) % (intmax_t)size);
+		hash *= (((hash * (uintmax_t)INIT_PRIME_NUMBER)
+			+ (uintmax_t)s[i]) % (uintmax_t)size);
 		i++;
 	}
 	if (hash == 0)

@@ -22,18 +22,19 @@
 # define INIT_PRIME_NUMBER 353
 # define REAL_SIZE_OFFSET 10
 
-typedef int			t_htable_cmp(const void *p1, const void *p2);
-typedef int			t_htable_hash(const void *p, int size);
+typedef	unsigned int	t_hash;
+typedef int				t_htable_cmp(const void *p1, const void *p2);
+typedef t_hash			t_htable_hash(const void *p, int size);
 
 /*
 ** linked list struct for separate chaining collision resolution. Not implemented
 */
-typedef struct		s_hlist
+typedef struct			s_hlist
 {
-	struct s_hlist	*next;
-	void			*key;
-	uintptr_t		val;
-}					t_hlist;
+	struct s_hlist		*next;
+	void				*key;
+	uintptr_t			val;
+}						t_hlist;
 
 /*
 ** htable element struct
@@ -59,7 +60,7 @@ typedef struct		s_htable {
 */
 unsigned long long	hash_func_fnv_1a_64(void *key, int len);
 unsigned int		hash_func_fnv_1a_32(void *key, int len);
-int					hash_func_kernighan_ritchie(const void *p, int size);
+unsigned int		hash_func_kernighan_ritchie(const void *p, int size);
 
 /*
 **	t_htable_aux.c
@@ -72,7 +73,7 @@ void				t_htable_free(t_htable *table);
 /*
 **	t_htable_methods.c
 */
-int					t_htable_find(t_htable *table, void *key);
+t_hash				t_htable_find(t_htable *table, void *key);
 int					t_htable_contains(t_htable *table, void *key);
 void				*t_htable_get(t_htable *table, void *key);
 int					t_htable_remove(t_htable **table, void *key);
