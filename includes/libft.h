@@ -22,6 +22,7 @@
 
 # include "./get_next_line.h"
 # include "./dlist.h"
+# include "./t_htable.h"
 
 # define HEX_CHARS "0123456789ABCDEF"
 
