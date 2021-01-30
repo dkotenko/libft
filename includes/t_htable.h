@@ -92,5 +92,4 @@ int					t_htable_add(t_htable **table, void *key, void *value);
 t_htable			*t_htable_create(int size);
 t_htable			*t_htable_init(int size, t_htable_cmp *cmp,
 					t_htable_hash *hash);
-void				t_htable_free(t_htable *table);
 #endif

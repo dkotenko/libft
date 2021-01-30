@@ -97,17 +97,3 @@ t_htable		*t_htable_create(int size)
 	new->counter = 0;
 	return (new);
 }
-
-void			t_htable_free(t_htable *table)
-{
-	int			i;
-
-	i = -1;
-	while (++i < table->real_size)
-	{
-		if (table->table[i])
-			free(table->table[i]);
-	}
-	free(table->table);
-	free(table);
-}
