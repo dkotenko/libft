@@ -12,26 +12,50 @@
 
 #include "../includes/t_htable.h"
 
-int				get_hash(const void *p, int size)
+int					t_htable_find(t_htable *table, void *key)
 {
-	int			i;
-	intmax_t	hash;
-	int			len;
-	const char	*s;
+	int				hash;
+	int				i;
 
-	s = (const char*)p;
-	hash = 1;
-	len = ft_strlen(s);
+	hash = table->hash(key, table->size);
+	if (!table->table[hash])
+		return (0);
 	i = 0;
-	while (i < len)
+	while (hash + i < table->real_size)
 	{
-		hash *= (((hash * (intmax_t)INIT_PRIME_NUMBER)
-			+ (intmax_t)s[i]) % (intmax_t)size);
+		if (!table->cmp(table->table[hash + i], key))
+			return (hash + i);
 		i++;
 	}
-	if (hash == 0)
-		hash = 1;
-	if (hash < 0)
-		return ((hash % size) * -1);
-	return (hash % size);
+	return (0);
 }
+
+int					t_htable_contains(t_htable *table, void *key)
+{
+	if (t_htable_find(table, key))
+		return (1);
+	return (0);
+}
+
+void				*t_htable_get(t_htable *table, void *key)
+{
+	int				hash;
+
+	hash = t_htable_find(table, key);
+	if (!hash)
+		return (NULL);
+	return (table->table[hash]->value);
+}
+
+int					t_htable_remove(t_htable **table, void *key)
+{
+	int				hash;
+
+	if (!(hash = t_htable_find(*table, key)))
+		return (0);
+	t_htable_data_free(t_htable_get(*table, key));
+	return (1);
+}
+
+
+

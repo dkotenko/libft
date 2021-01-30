@@ -25,6 +25,9 @@
 typedef int			t_htable_cmp(const void *p1, const void *p2);
 typedef int			t_htable_hash(const void *p, int size);
 
+/*
+** linked list struct for separate chaining collision resolution. Not implemented
+*/
 typedef struct		s_hlist
 {
 	struct s_hlist	*next;
@@ -32,26 +35,61 @@ typedef struct		s_hlist
 	uintptr_t		val;
 }					t_hlist;
 
+/*
+** htable element struct
+*/
+typedef struct		s_htable_data
+{
+	void			*key;
+	void			*value;
+}					t_htable_data;
+
 typedef struct		s_htable {
 	t_htable_cmp	*cmp;
 	t_htable_hash	*hash;
 	int				counter;
 	int				size;
 	int				real_size;
-	void			**table;
+	t_htable_data	**table;
 }					t_htable;
 
-int					t_htable_add(int hash, void *pointer,
-					t_htable **hash_table);
-t_htable			*t_htable_create(int size);
-void				t_htable_remove(t_htable *table);
-int					get_prime_size(int size);
-t_htable			*t_htable_resize(t_htable *table);
-int					t_htable_find(int hash, void *pointer, t_htable *table);
-t_htable			*t_htable_init(int size, t_htable_cmp *cmp,
-					t_htable_hash *hash);
+
+/*
+**	hash_functions.c
+*/
+unsigned long long	hash_func_fnv_1a_64(void *key, int len);
+unsigned int		hash_func_fnv_1a_32(void *key, int len);
+int					hash_func_kernighan_ritchie(const void *p, int size);
+
+/*
+**	t_htable_aux.c
+*/
 int					cmp_func(const void*a, const void*b);
-int					get_hash(const void*p, int size);
+int					is_prime_number(int n);
+int					get_prime_size(int size);
 void				t_htable_free(t_htable *table);
 
+/*
+**	t_htable_methods.c
+*/
+int					t_htable_find(t_htable *table, void *key);
+int					t_htable_contains(t_htable *table, void *key);
+void				*t_htable_get(t_htable *table, void *key);
+int					t_htable_remove(t_htable **table, void *key);
+
+/*
+**	t_htable_data.c
+*/
+t_htable_data		*t_htable_data_create(void *key, void *value);
+void                t_htable_data_free(t_htable_data *data);
+
+/*
+**	t_htable.c
+*/
+t_htable			*t_htable_resize(t_htable *table);
+int					t_htable_add(t_htable **table, void *key, void *value);
+t_htable			*t_htable_create(int size);
+t_htable			*t_htable_init(int size, t_htable_cmp *cmp,
+					t_htable_hash *hash);
+void				t_htable_free(t_htable *table);
 #endif

@@ -12,32 +12,68 @@
 
 #include "../includes/t_htable.h"
 
-int				cmp_func(const void *a, const void *b)
-{
-	return (ft_strcmp((const char *)a, (const char *)b));
-}
 
-int				is_prime_number(int n)
+
+t_htable		*t_htable_resize(t_htable *table)
 {
+	t_htable	*new;
+	int			next_size;
 	int			i;
 
-	if (n == 1)
-		return (0);
-	i = 2;
-	while (i * i <= n)
+	next_size = get_prime_size(table->size * 2);
+	if (!(new = t_htable_create(next_size)))
+		return (NULL);
+	new->hash = table->hash;
+	new->cmp = table->cmp;
+	i = -1;
+	while (++i < table->real_size)
 	{
-		if (!(n % i))
+		if (table->table[i])
+		{
+			t_htable_add(&table, table->table[i]->key,
+			table->table[i]->value);
+		}
+	}
+	t_htable_free(table);
+	return (new);
+}
+
+int				t_htable_add(t_htable **table, void *key, void *value)
+{
+	int			i;
+	int			hash;
+	
+	if ((*table)->counter >= (*table)->size / 2)
+	{
+		*table = t_htable_resize(*table);
+	}
+	hash = (*table)->hash(key, (*table)->size);
+	i = 0;
+	while (i + hash < (*table)->real_size)
+	{
+		if (!(*table)->table[hash + i])
+		{
+			(*table)->table[hash + i] = t_htable_data_create(key, value);
+			(*table)->counter++;
+			return (1);
+		}
+		else if (!((*table)->cmp(((*table)->table[hash + i])->key, key)))
 			return (0);
 		i++;
 	}
-	return (1);
+	*table = t_htable_resize(*table);
+	t_htable_add(table, key, value);
+	return (0);
 }
 
-int				get_prime_size(int size)
+t_htable		*t_htable_init(int size, t_htable_cmp *cmp, t_htable_hash *hash)
 {
-	while (!is_prime_number(size))
-		size++;
-	return (size);
+	t_htable	*t;
+
+	t = t_htable_create(size);
+	t->cmp = cmp;
+	t->hash = hash;
+	return (t);
 }
 
 t_htable		*t_htable_create(int size)
@@ -48,7 +84,8 @@ t_htable		*t_htable_create(int size)
 		return (NULL);
 	size = get_prime_size(size);
 	new->real_size = get_prime_size(size + REAL_SIZE_OFFSET);
-	new->table = (void **)malloc(sizeof(void *) * new->real_size);
+	new->table = \
+		(t_htable_data **)malloc(sizeof(t_htable_data *) * new->real_size);
 	new->size = size;
 	size = new->real_size;
 	while (--size > -1)
@@ -59,8 +96,16 @@ t_htable		*t_htable_create(int size)
 	return (new);
 }
 
-void			t_htable_remove(t_htable *table)
+void			t_htable_free(t_htable *table)
 {
+	int			i;
+
+	i = -1;
+	while (++i < table->real_size)
+	{
+		if (table->table[i])
+			free(table->table[i]);
+	}
 	free(table->table);
 	free(table);
 }

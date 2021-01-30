@@ -131,9 +131,11 @@ ft_printf/ft_printf_select_spec.c \
 ft_printf/ft_printf_r.c \
 ft_printf/t_buf.c \
 ft_printf/ft_vprintf.c \
-htable/get_hash.c \
+htable/t_htable_methods.c \
 htable/t_htable.c \
-htable/t_htable2.c
+htable/t_htable_aux.c \
+htable/t_htable_data.c \
+htable/hash_functions.c
 
 HEAD=includes/libft.h \
 	includes/get_next_line.h
