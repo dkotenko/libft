@@ -19,6 +19,7 @@ unsigned long long		hash_func_fnv_1a_64(void *key, int len)
 	int i;
 	
 	p = key;
+	len = ft_strlen((char *)p);
     h = 0xcbf29ce484222325ULL;
     i = -1;
 	while (++i < len)
@@ -33,9 +34,10 @@ unsigned int			hash_func_fnv_1a_32(void *key, int len)
     unsigned char		*p;
 	unsigned int		h;
 	int i;
-	
+
 	h = 0x811c9dc5;
 	p = key;
+	len = ft_strlen((char *)p);
 	i = -1;
 	while (++i < len)
 	{
