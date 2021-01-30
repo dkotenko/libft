@@ -24,7 +24,7 @@
 
 typedef	unsigned int	t_hash;
 typedef int				t_htable_cmp(const void *p1, const void *p2);
-typedef t_hash			t_htable_hash(const void *p, int size);
+typedef t_hash			t_htable_hash(void *p, int size);
 
 /*
 ** linked list struct for separate chaining collision resolution. Not implemented
