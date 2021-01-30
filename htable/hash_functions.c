@@ -44,14 +44,14 @@ unsigned int			hash_func_fnv_1a_32(void *key, int len)
    return h;
 }
 
-unsigned int			hash_func_kernighan_ritchie(const void *p, int size)
+unsigned int			hash_func_kernighan_ritchie(void *p, int size)
 {
 	int					i;
 	uintmax_t			hash;
 	int					len;
-	const char			*s;
+	char				*s;
 
-	s = (const char*)p;
+	s = (char *)p;
 	hash = 1;
 	len = ft_strlen(s);
 	i = 0;

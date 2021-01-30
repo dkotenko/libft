@@ -60,7 +60,7 @@ typedef struct		s_htable {
 */
 unsigned long long	hash_func_fnv_1a_64(void *key, int len);
 unsigned int		hash_func_fnv_1a_32(void *key, int len);
-unsigned int		hash_func_kernighan_ritchie(const void *p, int size);
+unsigned int		hash_func_kernighan_ritchie(void *p, int size);
 
 /*
 **	t_htable_aux.c
