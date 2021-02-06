@@ -85,6 +85,11 @@ int						**ft_intmatrixnew(int rows, int columns);
 char					**ft_strarrnew(int x, int y);
 
 /*
+**	error
+*/
+int						handle_error(char *s);
+
+/*
 **	bint
 */
 char					*ft_bintaddtn(char *operand_1, char *operand_2);
