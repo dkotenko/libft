@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:48:19 by clala             #+#    #+#             */
-/*   Updated: 2020/02/20 18:58:17 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/06 21:20:15 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int			t_buffer_write(t_buffer *buf, const char *str)
 	return (i);
 }
 
-void		t_buffer_getchar(t_buffer *buf)
+char			t_buffer_getchar(t_buffer *buf)
 {
 	char	temp[T_BUFFER_GETCHAR_BUFFSIZE + 1];
 
@@ -75,6 +75,7 @@ void		t_buffer_getchar(t_buffer *buf)
 	if (read(STDIN_FILENO, temp, T_BUFFER_GETCHAR_BUFFSIZE) == -1)
 		handle_error("Can't read STDIN");
 	t_buffer_write(buf, temp);
+	return (temp[0]);
 }
 
 char		t_buffer_pop(t_buffer *buf)
@@ -90,4 +91,10 @@ char		t_buffer_pop(t_buffer *buf)
 			buf->i--;
 	}
 	return (c);
+}
+
+void		t_buffer_clean(t_buffer *buf)
+{
+	ft_strclr(buf->s);
+	buf->i = 0;
 }
