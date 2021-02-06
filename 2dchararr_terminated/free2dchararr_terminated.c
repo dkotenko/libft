@@ -23,3 +23,24 @@ int		free_2dchararr_terminated(char **arr)
 	free(arr);
 	return (1);
 }
+
+int			len_2dchararr_terminated(char **arr)
+{
+	int		i;
+
+	i = 0;
+	while (arr[i])
+		i++;
+	return (i);
+}
+
+int			print_2dchararr_terminated(char **arr)
+{
+	while (*arr)
+	{
+		ft_putstr(*arr);
+		ft_putstr("\n");
+		arr++;
+	}
+	return (1);
+}

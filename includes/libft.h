@@ -20,9 +20,12 @@
 # include <stdint.h>
 # include <stdarg.h>
 
-# include "./get_next_line.h"
-# include "./dlist.h"
-# include "./t_htable.h"
+# include "get_next_line.h"
+# include "dlist.h"
+# include "t_htable.h"
+# include "ft_printf.h"
+# include "error.h"
+# include "t_buffer.h"
 
 # define HEX_CHARS "0123456789ABCDEF"
 
@@ -67,6 +70,12 @@ typedef struct			s_point
 	int					y;
 }						t_point;
 
+/*
+**	2dchararr_terminated
+*/
+int						free_2dchararr_terminated(char **arr);
+int						len_2dchararr_terminated(char **arr);
+int						print_2dchararr_terminated(char **arr);
 /*
 **	arrays
 */
@@ -136,6 +145,7 @@ int						ft_ilen(int n);
 int						ft_imaxlen(intmax_t n);
 size_t					ft_uimaxlen(uintmax_t n);
 size_t					ft_uimaxtmaxlen(uintmax_t n);
+int						ft_clamp(int d, int min, int max);
 
 /*
 **	memory
@@ -149,12 +159,12 @@ void					*ft_memcpy(void *dest, const void *src, size_t n);
 void					*ft_memmove(void *dst, const void *src, size_t n);
 void					*ft_memset(void *destination, int c, size_t n);
 int						ft_free2dchararr(char **arr, int rows);
-int						free_2dchararr_terminated(char **arr);
-
 void					*ft_memalloc(size_t size);
 void					ft_memdel(void **ap);
 int						ft_free(char *format, ...);
 void					ft_bzero(void *dest, size_t n);
+int						ft_free_int(void *to_free);
+int						ft_free_null(void **to_free);
 
 /*
 **	string
@@ -192,7 +202,7 @@ size_t					ft_strlcat (char *dest, const char *app, size_t n);
 size_t					ft_strlen(const char *str);
 char					*ft_strncat (char *dest, const char *app, size_t n);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
-char					*ft_strncpy(char *str1, const char *str2, size_t n);
+char					*ft_strncpy(char *dest, const char *src, size_t n);
 char					*ft_strnstr(const char *str, const char *substr
 							, size_t n);
 char					*ft_strrchr (const char *str, int ch);
@@ -204,6 +214,7 @@ char					*ft_strupr(char *s);
 void					ft_strrev(char *s);
 char					*ft_strchrvar(const char *str, char *format, ...);
 char					*ft_strchrset(const char *str, const char *charset);
+char					*ft_strreplace(char *s, char *what, char *to);
 
 /*
 **	print

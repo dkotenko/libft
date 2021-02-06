@@ -12,20 +12,22 @@
 
 #include "dlist.h"
 
-t_dlist_node		*t_dlist_node_new(void *data)
+t_dlist_node		*t_dlist_node_new(void *data, int size)
 {
 	t_dlist_node	*new;
 
 	new = (t_dlist_node *)malloc(sizeof(t_dlist_node));
+	if (!new)
+		return (NULL);
 	new->data = data;
 	new->prev = NULL;
 	new->next = NULL;
-	new->data_size = 0;
+	new->data_size = size;
 	return (new);
 }
 
 /*
-** Add new node and set it to go the given pointer
+** Add new node and set it to the given pointer
 */
 
 t_dlist_node		*t_dlist_insert_after(t_dlist *list,
@@ -61,7 +63,7 @@ t_dlist_node *node, t_dlist_node *new)
 }
 
 /*
-** add to the front of list
+** add to the front of the list
 */
 
 t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
@@ -78,6 +80,9 @@ t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
 	return (new);
 }
 
+/*
+** add to the end of the list
+*/
 t_dlist_node		*t_dlist_append(t_dlist *list, t_dlist_node *new)
 {
 	if (!list->tail)

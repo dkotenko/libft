@@ -10,13 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "t_htable.h"
+#include "../includes/t_htable.h"
 
-unsigned long long		hash_func_fnv_1a_64(void *key, int len)
+unsigned long long		hash_func_fnv_1a_64(void *key, int size)
 {
     unsigned char		*p;
 	unsigned long long	h;
-	int i;
+	int					i;
+	int					len;
 	
 	p = key;
 	len = ft_strlen((char *)p);
@@ -26,14 +27,17 @@ unsigned long long		hash_func_fnv_1a_64(void *key, int len)
 	{
 		h = (h ^ p[i]) * 0x100000001b3ULL;
 	}
-   return h;
+	if (h == 0)
+		h = 1;
+	return (h % size);
 }
 
-unsigned int			hash_func_fnv_1a_32(void *key, int len)
+unsigned int			hash_func_fnv_1a_32(void *key, int size)
 {
     unsigned char		*p;
 	unsigned int		h;
-	int i;
+	int					i;
+	int					len;
 
 	h = 0x811c9dc5;
 	p = key;
@@ -43,7 +47,9 @@ unsigned int			hash_func_fnv_1a_32(void *key, int len)
 	{
 		h = (h ^ p[i]) * 0x01000193;
 	}
-   return h;
+	if (h == 0)
+		h = 1;
+	return (h % size);
 }
 
 unsigned int			hash_func_kernighan_ritchie(void *p, int size)

@@ -13,15 +13,14 @@
 #ifndef DLIST_H
 # define DLIST_H
 
-# include <string.h>
-# include <stdlib.h>
+# include "libft.h"
 
 typedef struct			s_dlist_node
 {
 	struct s_dlist_node	*next;
 	struct s_dlist_node	*prev;
 	void				*data;
-	int					*data_size;
+	int					data_size;
 }						t_dlist_node;
 
 typedef struct			s_dlist
@@ -31,7 +30,7 @@ typedef struct			s_dlist
 	int					size;
 }						t_dlist;
 
-t_dlist_node			*t_dlist_node_new(void *data);
+t_dlist_node			*t_dlist_node_new(void *data, int size);
 t_dlist_node			*t_dlist_insert_after(t_dlist *list,
 							t_dlist_node *node, t_dlist_node *new);
 t_dlist_node			*t_dlist_insert_before(t_dlist *list,

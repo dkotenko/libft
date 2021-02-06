@@ -18,12 +18,13 @@ t_hash				t_htable_find(t_htable *table, void *key)
 	t_hash			i;
 	t_hash			size;
 
-	size = table->real_size;
+	size = table->size;
 	hash = table->hash(key, table->size);
+	
 	i = 0;
-	while (table->table[hash] && hash + i < size)
+	while (table->table[hash + i] && hash + i < size)
 	{
-		if (!table->cmp(table->table[hash + i], key))
+		if (!table->cmp(table->table[hash + i]->key, key))
 			return (hash + i);
 		i++;
 	}
@@ -37,23 +38,34 @@ int					t_htable_contains(t_htable *table, void *key)
 	return (0);
 }
 
-void				*t_htable_get(t_htable *table, void *key)
+int					t_htable_remove(t_htable *table, void *key)
+{
+	t_hash			hash;
+	int				i;
+
+	if (!(hash = t_htable_find(table, key)))
+		return (0);
+	t_htable_data_free(t_htable_get(table, key));
+	i = -1;
+	while (++i < table->counter)
+	{
+		if (table->curr_data[i] == hash)
+			break ;
+	}
+	while (i < table->counter - 1)
+		table->curr_data[i] = table->curr_data[i + 1];
+	table->counter--;
+	return (1);
+}
+
+int					t_htable_set(t_htable *table, void *key, void *value)
 {
 	t_hash			hash;
 
 	hash = t_htable_find(table, key);
-	if (!hash)
-		return (NULL);
-	return (table->table[hash]->value);
-}
-
-int					t_htable_remove(t_htable **table, void *key)
-{
-	t_hash			hash;
-
-	if (!(hash = t_htable_find(*table, key)))
-		return (0);
-	t_htable_data_free(t_htable_get(*table, key));
+	if (table->table[hash] && table->table[hash]->value)
+		free(table->table[hash]->value);
+	table->table[hash]->value = value;
 	return (1);
 }
 

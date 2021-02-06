@@ -40,6 +40,7 @@ ctype/ft_isascii.c \
 ctype/ft_isdigit.c \
 ctype/ft_isprint.c \
 ctype/ft_isinteger.c \
+error/handle_error.c \
 files/get_next_line.c \
 list/ft_lstadd.c \
 list/ft_lstadd.o \
@@ -56,6 +57,7 @@ math/ft_uimaxtmaxlen.c \
 math/ft_imaxval.c \
 math/ft_imaxlen.c \
 math/ft_uimaxlen.c \
+math/ft_clamp.c \
 memory/ft_free2dchararr.c \
 memory/ft_bzero.c \
 memory/ft_free.c \
@@ -67,7 +69,7 @@ memory/ft_memcpy.c \
 memory/ft_memdel.c \
 memory/ft_memmove.c \
 memory/ft_memset.c \
-memory/free2dchararr_terminated.c \
+2dchararr_terminated/free2dchararr_terminated.c \
 print/ft_putchar.c \
 print/ft_putchar_fd.c \
 print/ft_putendl.c \
@@ -119,6 +121,7 @@ string/ft_tolower.c \
 string/ft_toupper.c \
 string/ft_strchrset.c \
 string/ft_strchrvar.c \
+string/ft_strreplace.c \
 dlist/dlist.c \
 dlist/dlist_node.c \
 ft_printf/ft_printf.c \
@@ -135,33 +138,41 @@ htable/t_htable_methods.c \
 htable/t_htable.c \
 htable/t_htable_aux.c \
 htable/t_htable_data.c \
-htable/hash_functions.c
+htable/hash_functions.c \
+htable/t_htable_get.c \
+buffer/t_buffer.c
 
-HEAD=includes/libft.h \
-	includes/get_next_line.h
+
+HEADERS=includes/libft.h
+	
 
 OBJ=$(SRC:.c=.o)
 INCLUDES=-I./includes
 
 CC=gcc -Wall -Wextra -Werror
+THREADS = 8
+
 
 all: $(NAME)
 
 multi:
-	$(MAKE) -j8 all
+	$(MAKE) -j$(THREADS) all
 
 $(NAME): $(OBJ)
-	ar rcs $(NAME) $(OBJ)  
+	@ar rcs $(NAME) $(OBJ) 
 	@echo =================================
 	@echo $(NAME) HAS BEEN MADE          
 	@echo =================================	
 
-%.o:%.c $(HEAD)
+%.o:%.c $(HEADERS)
 	@$(CC) $(INCLUDES) -c $< -o $@
 	@echo $<
+
 		
 clean:
 	/bin/rm -f $(OBJ)
 fclean: clean
 	/bin/rm -f $(NAME)
 re: fclean all
+
+.PHONY: lib clean fclean all re multi

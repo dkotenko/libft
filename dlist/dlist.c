@@ -17,6 +17,8 @@ t_dlist			*t_dlist_new(void)
 	t_dlist		*new;
 
 	new = (t_dlist *)malloc(sizeof(t_dlist));
+	if (!new)
+		return (NULL);
 	new->size = 0;
 	new->head = NULL;
 	new->tail = NULL;

@@ -13,14 +13,16 @@
 #ifndef T_HTABLE_H
 # define T_HTABLE_H
 
+# include "libft.h"
 # include <stdlib.h>
 # include <string.h>
 # include <stdint.h>
 # include <fcntl.h>
-# include "libft.h"
 
 # define INIT_PRIME_NUMBER 353
 # define REAL_SIZE_OFFSET 10
+# define T_HTABLE_KEY 0
+# define T_HTABLE_VALUE 1
 
 typedef	unsigned int	t_hash;
 typedef int				t_htable_cmp(const void *p1, const void *p2);
@@ -48,6 +50,7 @@ typedef struct		s_htable_data
 typedef struct		s_htable {
 	t_htable_cmp	*cmp;
 	t_htable_hash	*hash;
+	t_hash			*curr_data;
 	int				counter;
 	int				size;
 	int				real_size;
@@ -58,8 +61,8 @@ typedef struct		s_htable {
 /*
 **	hash_functions.c
 */
-unsigned long long	hash_func_fnv_1a_64(void *key, int len);
-unsigned int		hash_func_fnv_1a_32(void *key, int len);
+unsigned long long	hash_func_fnv_1a_64(void *key, int size);
+unsigned int		hash_func_fnv_1a_32(void *key, int size);
 unsigned int		hash_func_kernighan_ritchie(void *p, int size);
 
 /*
@@ -76,7 +79,8 @@ void				t_htable_free(t_htable *table);
 t_hash				t_htable_find(t_htable *table, void *key);
 int					t_htable_contains(t_htable *table, void *key);
 void				*t_htable_get(t_htable *table, void *key);
-int					t_htable_remove(t_htable **table, void *key);
+int					t_htable_remove(t_htable *table, void *key);
+int					t_htable_set(t_htable *table, void *key, void *value);
 
 /*
 **	t_htable_data.c
@@ -92,4 +96,12 @@ int					t_htable_add(t_htable **table, void *key, void *value);
 t_htable			*t_htable_create(int size);
 t_htable			*t_htable_init(int size, t_htable_cmp *cmp,
 					t_htable_hash *hash);
+
+/*
+**	t_htable_get.c
+*/
+void		***t_htable_get_keys_values(t_htable *table);
+void		**t_htable_get_keys(t_htable *table);
+void		**t_htable_get_values(t_htable *table);
+void		*t_htable_get(t_htable *table, void *key);
 #endif
