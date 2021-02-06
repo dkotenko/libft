@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_buffer.c                                         :+:      :+:    :+:   */
+/*   t_buffer_init.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:48:19 by clala             #+#    #+#             */
-/*   Updated: 2021/02/06 21:20:15 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:08:25 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "t_buffer.h"
 
-void		t_buffer_add_size(t_buffer *buf)
+void			t_buffer_add_size(t_buffer *buf)
 {
-	char	*new;
-	int		i;
+	char		*new;
+	int			i;
 
 	i = 0;
 	new = ft_strnew(T_BUFFER_BUFF_SIZE + buf->size);
@@ -42,59 +42,8 @@ t_buffer		*t_buffer_create(int size)
 	return (buf);
 }
 
-void		t_buffer_free(t_buffer **buf)
+void			t_buffer_free(t_buffer **buf)
 {
 	free((*buf)->s);
 	free(*buf);
-}
-
-int			t_buffer_write(t_buffer *buf, const char *str)
-{
-	int		i;
-	int		len;
-
-	len = ft_strlen(str);
-	i = 0;
-	if (str && str[i])
-	{
-		while (buf->i + len >= buf->size)
-			t_buffer_add_size(buf);
-		while (str[i] && i < len)
-		{
-			buf->s[buf->i++] = str[i++];
-		}
-	}
-	return (i);
-}
-
-char			t_buffer_getchar(t_buffer *buf)
-{
-	char	temp[T_BUFFER_GETCHAR_BUFFSIZE + 1];
-
-	temp[T_BUFFER_GETCHAR_BUFFSIZE] = '\0';
-	if (read(STDIN_FILENO, temp, T_BUFFER_GETCHAR_BUFFSIZE) == -1)
-		handle_error("Can't read STDIN");
-	t_buffer_write(buf, temp);
-	return (temp[0]);
-}
-
-char		t_buffer_pop(t_buffer *buf)
-{
-	char	c;
-
-	c = 0;
-	if (buf->i > -1)
-	{
-		c = buf->s[buf->i];
-		buf->s[buf->i] = '\0';
-		if (buf->i > 0)
-			buf->i--;
-	}
-	return (c);
-}
-
-void		t_buffer_clean(t_buffer *buf)
-{
-	ft_strclr(buf->s);
-	buf->i = 0;
 }

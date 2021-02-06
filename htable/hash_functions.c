@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_htable2.c                                        :+:      :+:    :+:   */
+/*   hash_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 14:33:59 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:04:51 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 unsigned long long		hash_func_fnv_1a_64(void *key, int size)
 {
-    unsigned char		*p;
+	unsigned char		*p;
 	unsigned long long	h;
 	int					i;
 	int					len;
-	
+
 	p = key;
 	len = ft_strlen((char *)p);
-    h = 0xcbf29ce484222325ULL;
-    i = -1;
+	h = 0xcbf29ce484222325ULL;
+	i = -1;
 	while (++i < len)
 	{
 		h = (h ^ p[i]) * 0x100000001b3ULL;
@@ -34,7 +34,7 @@ unsigned long long		hash_func_fnv_1a_64(void *key, int size)
 
 unsigned int			hash_func_fnv_1a_32(void *key, int size)
 {
-    unsigned char		*p;
+	unsigned char		*p;
 	unsigned int		h;
 	int					i;
 	int					len;

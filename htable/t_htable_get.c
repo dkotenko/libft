@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_htable.c                                         :+:      :+:    :+:   */
+/*   t_htable_get.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2020/02/13 19:47:06 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:03:27 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** returns pointer to a value
 */
+
 void		*t_htable_get(t_htable *table, void *key)
 {
 	t_hash	hash;
@@ -28,6 +29,7 @@ void		*t_htable_get(t_htable *table, void *key)
 /*
 ** returns an array of pointers to values
 */
+
 void		**t_htable_get_values(t_htable *table)
 {
 	void	**new;
@@ -49,6 +51,7 @@ void		**t_htable_get_values(t_htable *table)
 /*
 ** returns an array of pointers to keys
 */
+
 void		**t_htable_get_keys(t_htable *table)
 {
 	void	**new;
@@ -70,6 +73,7 @@ void		**t_htable_get_keys(t_htable *table)
 /*
 ** returns an array of arrays of pointers to keys and values
 */
+
 void		***t_htable_get_keys_values(t_htable *table)
 {
 	void	***new;
@@ -80,7 +84,7 @@ void		***t_htable_get_keys_values(t_htable *table)
 
 	new = (void ***)ft_memalloc(sizeof(void **) * table->counter);
 	if (!new)
-		return (NULL);	
+		return (NULL);
 	keys = t_htable_get_keys(table);
 	values = t_htable_get_values(table);
 	i = -1;

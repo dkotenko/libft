@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/06/12 12:07:29 by edrowzee          #+#    #+#             */
+/*   Updated: 2021/02/07 00:23:23 by clala            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ERROR_H
 # define ERROR_H
-
 
 # define ERR_MALLOC "Can't allocate memory"
 # define ERR_ARG_NUM "Invalid number of arguments. See usage"

@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:48:19 by clala             #+#    #+#             */
-/*   Updated: 2021/02/06 21:19:40 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:01:40 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,5 @@ int				t_buffer_write(t_buffer *buf, const char *str);
 void			t_buffer_clean(t_buffer *buf);
 char			t_buffer_pop(t_buffer *buf);
 char			t_buffer_getchar(t_buffer *buf);
-# endif
+
+#endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_htables.c                                        :+:      :+:    :+:   */
+/*   t_htable_methods.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 14:45:59 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:03:41 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ t_hash				t_htable_find(t_htable *table, void *key)
 
 	size = table->size;
 	hash = table->hash(key, table->size);
-	
 	i = 0;
 	while (table->table[hash + i] && hash + i < size)
 	{
@@ -68,6 +67,3 @@ int					t_htable_set(t_htable *table, void *key, void *value)
 	table->table[hash]->value = value;
 	return (1);
 }
-
-
-

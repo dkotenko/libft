@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2020/02/13 19:47:06 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:02:52 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,8 @@ int				t_htable_add(t_htable **table, void *key, void *value)
 	hash = (*table)->hash(key, (*table)->size);
 	i = 0;
 	size = (*table)->real_size;
-	//size = (*table)->real_size;
 	while (i + hash < size)
 	{
-		
 		if (!(*table)->table[hash + i])
 		{
 			(*table)->table[hash + i] = t_htable_data_create(key, value);
@@ -93,7 +91,7 @@ t_htable		*t_htable_create(int size)
 	new->size = size;
 	new->curr_data = (t_hash *)ft_memalloc(sizeof(t_hash) * new->real_size);
 	if (!new->table || !new->curr_data)
-	{	
+	{
 		new->curr_data ? free(new->curr_data) : 0;
 		new->table ? free(new->table) : 0;
 		free(new);

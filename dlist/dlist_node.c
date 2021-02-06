@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:01:36 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 22:06:46 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:09:48 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
 /*
 ** add to the end of the list
 */
+
 t_dlist_node		*t_dlist_append(t_dlist *list, t_dlist_node *new)
 {
 	if (!list->tail)

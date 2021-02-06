@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:43:37 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 21:53:21 by clala            ###   ########.fr       */
+/*   Updated: 2021/02/07 00:06:19 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int		free_2dchararr_terminated(char **arr)
 	return (1);
 }
 
-int			len_2dchararr_terminated(char **arr)
+int		len_2dchararr_terminated(char **arr)
 {
-	int		i;
+	int	i;
 
 	i = 0;
 	while (arr[i])
@@ -34,7 +34,7 @@ int			len_2dchararr_terminated(char **arr)
 	return (i);
 }
 
-int			print_2dchararr_terminated(char **arr)
+int		print_2dchararr_terminated(char **arr)
 {
 	while (*arr)
 	{

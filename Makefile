@@ -6,7 +6,7 @@
 #    By: clala <clala@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/15 16:58:46 by clala             #+#    #+#              #
-#    Updated: 2020/02/15 21:53:21 by clala            ###   ########.fr        #
+#    Updated: 2021/02/07 00:07:43 by clala            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,7 +140,8 @@ htable/t_htable_aux.c \
 htable/t_htable_data.c \
 htable/hash_functions.c \
 htable/t_htable_get.c \
-buffer/t_buffer.c
+buffer/t_buffer_init.c \
+buffer/t_buffer_string.c \
 
 
 HEADERS=includes/libft.h
