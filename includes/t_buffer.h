@@ -31,5 +31,6 @@ int				t_buffer_write(t_buffer *buf, const char *str);
 void			t_buffer_clean(t_buffer *buf);
 char			t_buffer_pop(t_buffer *buf);
 char			t_buffer_getchar(t_buffer *buf);
+int				t_buffer_add_char(t_buffer *buf, char c);
 
 #endif

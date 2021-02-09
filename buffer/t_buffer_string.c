@@ -12,6 +12,14 @@
 
 #include "t_buffer.h"
 
+int			t_buffer_add_char(t_buffer *buf, char c)
+{
+	if (buf->i + 1 >= buf->size)
+		t_buffer_add_size(buf);
+	buf->s[buf->i++] = c;
+	return (buf->i);
+}
+
 int			t_buffer_write(t_buffer *buf, const char *str)
 {
 	int		i;
