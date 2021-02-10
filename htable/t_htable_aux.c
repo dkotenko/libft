@@ -50,6 +50,7 @@ void			t_htable_free(t_htable *table)
 		if (table->table[i])
 			free(table->table[i]);
 	}
+	free(table->curr_data);
 	free(table->table);
 	free(table);
 }

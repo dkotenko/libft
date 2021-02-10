@@ -154,7 +154,8 @@ CC=gcc -Wall -Wextra -Werror
 THREADS = 8
 
 
-all: $(NAME)
+all:
+	$(MAKE) -j$(THREADS) $(NAME)
 
 multi:
 	$(MAKE) -j$(THREADS) all

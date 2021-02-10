@@ -65,7 +65,7 @@ unsigned int			hash_func_kernighan_ritchie(void *p, int size)
 	i = 0;
 	while (i < len)
 	{
-		hash *= (((hash * (uintmax_t)INIT_PRIME_NUMBER)
+		hash *= (((hash * (uintmax_t)T_HTABLE_INIT_PRIME_NUMBER)
 			+ (uintmax_t)s[i]) % (uintmax_t)size);
 		i++;
 	}

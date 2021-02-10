@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "libft.h"
 
 void		t_buf_add_size(t_buf *buf)
 {
@@ -34,7 +34,9 @@ t_buf		*t_buf_create(int size)
 {
 	t_buf	*buf;
 
-	buf = (t_buf *)malloc(sizeof(t_buf));
+	buf = (t_buf *)ft_memalloc(sizeof(t_buf));
+	if (!size)
+		size = T_BUFFER_BUFF_SIZE;
 	if (!(buf->s = ft_strnew(size)))
 		return (NULL);
 	buf->i = 0;

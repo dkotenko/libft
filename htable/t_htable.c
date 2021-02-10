@@ -18,6 +18,7 @@ t_htable		*t_htable_resize(t_htable *table)
 	int			next_size;
 	int			i;
 
+	
 	next_size = get_prime_size(table->size * 2);
 	if (!(new = t_htable_create(next_size)))
 		return (NULL);
@@ -28,7 +29,7 @@ t_htable		*t_htable_resize(t_htable *table)
 	{
 		if (table->table[i])
 		{
-			t_htable_add(&table, table->table[i]->key,
+			t_htable_add(&new, table->table[i]->key,
 			table->table[i]->value);
 		}
 	}
@@ -43,7 +44,9 @@ int				t_htable_add(t_htable **table, void *key, void *value)
 	t_hash		size;
 
 	if ((*table)->counter >= (*table)->size / 2)
+	{
 		*table = t_htable_resize(*table);
+	}	
 	hash = (*table)->hash(key, (*table)->size);
 	i = 0;
 	size = (*table)->real_size;
@@ -80,26 +83,15 @@ t_htable		*t_htable_init(int size, t_htable_cmp *cmp, t_htable_hash *hash)
 t_htable		*t_htable_create(int size)
 {
 	t_htable	*new;
-	int			i;
 
-	if (!(new = (t_htable *)malloc(sizeof(t_htable))))
-		return (NULL);
-	size = get_prime_size(size);
-	new->real_size = get_prime_size(size + REAL_SIZE_OFFSET);
-	new->table = \
-		(t_htable_data **)malloc(sizeof(t_htable_data *) * new->real_size);
+	new = (t_htable *)ft_memalloc(sizeof(t_htable));
+	size = size ? get_prime_size(size) : 
+		get_prime_size(T_HTABLE_INIT_PRIME_NUMBER);
+	new->real_size = get_prime_size(size + T_HTABLE_REAL_SIZE_OFFSET);
+	new->table = (t_htable_data **)ft_memalloc(
+		sizeof(t_htable_data *) * new->real_size);
 	new->size = size;
 	new->curr_data = (t_hash *)ft_memalloc(sizeof(t_hash) * new->real_size);
-	if (!new->table || !new->curr_data)
-	{
-		new->curr_data ? free(new->curr_data) : 0;
-		new->table ? free(new->table) : 0;
-		free(new);
-		return (NULL);
-	}
-	i = -1;
-	while (++i < new->real_size)
-		new->table[i] = NULL;
 	new->counter = 0;
 	return (new);
 }

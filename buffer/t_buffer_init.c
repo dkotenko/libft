@@ -19,12 +19,7 @@ void			t_buffer_add_size(t_buffer *buf)
 
 	i = 0;
 	new = ft_strnew(T_BUFFER_BUFF_SIZE + buf->size);
-	while (buf->s[i])
-	{
-		new[i] = buf->s[i];
-		i++;
-	}
-	buf->i = i;
+	ft_strcpy(new, buf->s);
 	buf->size += T_BUFFER_BUFF_SIZE;
 	free(buf->s);
 	buf->s = new;
@@ -34,10 +29,10 @@ t_buffer		*t_buffer_create(int size)
 {
 	t_buffer	*buf;
 
-	buf = (t_buffer *)malloc(sizeof(t_buffer));
-	if (!(buf->s = ft_strnew(size)))
-		return (NULL);
-	buf->i = 0;
+	buf = (t_buffer *)ft_memalloc(sizeof(t_buffer));
+	if (!size)
+		size = T_BUFFER_BUFF_SIZE;
+	buf->s = ft_strnew(size);
 	buf->size = size;
 	return (buf);
 }

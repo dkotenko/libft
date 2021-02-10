@@ -19,7 +19,7 @@ static void	free_arr(int **arr, int i)
 	free(arr);
 }
 
-int			**ft_intmatrixnew(int rows, int columns)
+int			**ft_intmatrixnew(int rows, int cols)
 {
 	int		**matrix;
 	int		i;
@@ -29,7 +29,7 @@ int			**ft_intmatrixnew(int rows, int columns)
 	i = 0;
 	while (i < rows)
 	{
-		if (!(matrix[i] = ft_intarrnew(columns)))
+		if (!(matrix[i] = ft_intarrnew(cols)))
 		{
 			free_arr(matrix, i - 1);
 			return (NULL);

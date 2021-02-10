@@ -19,8 +19,8 @@
 # include <stdint.h>
 # include <fcntl.h>
 
-# define INIT_PRIME_NUMBER 353
-# define REAL_SIZE_OFFSET 10
+# define T_HTABLE_INIT_PRIME_NUMBER 353
+# define T_HTABLE_REAL_SIZE_OFFSET 10
 # define T_HTABLE_KEY 0
 # define T_HTABLE_VALUE 1
 

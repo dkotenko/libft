@@ -80,9 +80,9 @@ int						print_2dchararr_terminated(char **arr);
 /*
 **	arrays
 */
-char					**ft_create2dchararr(int rows, int columns);
+char					**ft_create2dchararr(int rows, int cols);
 int						*ft_intarrnew(int size);
-int						**ft_intmatrixnew(int rows, int columns);
+int						**ft_intmatrixnew(int rows, int cols);
 char					**ft_strarrnew(int x, int y);
 
 /*

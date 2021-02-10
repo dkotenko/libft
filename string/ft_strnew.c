@@ -10,23 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
 char		*ft_strnew(size_t size)
 {
 	char	*s;
-	size_t	i;
 
 	if (size + 1 < size)
-		return (NULL);
-	s = (char *)malloc(sizeof(char) * (size + 1));
-	if (!s)
-		return (NULL);
-	i = 0;
-	while (i < size + 1)
-	{
-		s[i] = '\0';
-		i++;
-	}
+		handle_error(ERR_MALLOC_SIZE);
+	s = (char *)ft_memalloc(sizeof(char) * (size + 1));
 	return (s);
 }
