@@ -29,9 +29,8 @@ t_buffer		*t_buffer_create(int size)
 {
 	t_buffer	*buf;
 
+	size = !size ? T_BUFFER_BUFF_SIZE : size;
 	buf = (t_buffer *)ft_memalloc(sizeof(t_buffer));
-	if (!size)
-		size = T_BUFFER_BUFF_SIZE;
 	buf->s = ft_strnew(size);
 	buf->size = size;
 	return (buf);
@@ -39,6 +38,12 @@ t_buffer		*t_buffer_create(int size)
 
 void			t_buffer_free(t_buffer **buf)
 {
-	free((*buf)->s);
+	if (!*buf)
+		return ;
+	if ((*buf)->s)
+	{
+		free((*buf)->s);
+	}
 	free(*buf);
+	*buf = NULL;
 }

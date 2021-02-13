@@ -37,8 +37,6 @@ void		**t_htable_get_values(t_htable *table)
 	t_hash	hash;
 
 	new = (void **)ft_memalloc(sizeof(void *) * (table->counter + 1));
-	if (!new)
-		return (NULL);
 	i = -1;
 	while (++i < table->counter)
 	{
@@ -59,8 +57,6 @@ void		**t_htable_get_keys(t_htable *table)
 	t_hash	hash;
 
 	new = (void **)ft_memalloc(sizeof(void *) * (table->counter + 1));
-	if (!new)
-		return (NULL);
 	i = -1;
 	while (++i < table->counter)
 	{
@@ -83,17 +79,13 @@ void		***t_htable_get_keys_values(t_htable *table)
 	void	**values;
 
 	new = (void ***)ft_memalloc(sizeof(void **) * table->counter);
-	if (!new)
-		return (NULL);
 	keys = t_htable_get_keys(table);
 	values = t_htable_get_values(table);
 	i = -1;
 	while (++i < table->counter)
 	{
 		hash = table->curr_data[i];
-		if (!(new[i] = (void **)ft_memalloc(
-			sizeof(void *) * 3)))
-			return (NULL);
+		new[i] = (void **)ft_memalloc(sizeof(void *) * 3);
 		new[i][T_HTABLE_KEY] = keys[i];
 		new[i][T_HTABLE_VALUE] = values[i];
 	}

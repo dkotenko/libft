@@ -23,6 +23,8 @@ typedef struct			s_dlist_node
 	int					data_size;
 }						t_dlist_node;
 
+typedef void (*t_free_node)(t_dlist_node *);
+
 typedef struct			s_dlist
 {
 	struct s_dlist_node	*head;
@@ -40,5 +42,10 @@ t_dlist_node			*t_dlist_append(t_dlist *list, t_dlist_node *new);
 t_dlist					*t_dlist_new();
 t_dlist_node			*t_dlist_pop(t_dlist *list, t_dlist_node *node);
 t_dlist					*t_dlist_remove_node(t_dlist *list, t_dlist_node *node);
+void					t_dlist_node_free(void (*free_func)(t_dlist_node *),
+							t_dlist_node *n);
+void					t_dlist_free(t_dlist *dlist,
+							void (*free_func)(t_dlist_node *));
+void					init_cmd(t_dlist *cmd);
 
 #endif

@@ -16,8 +16,7 @@ t_htable_data		*t_htable_data_create(void *key, void *value)
 {
 	t_htable_data	*new;
 
-	if (!(new = (t_htable_data *)malloc(sizeof(t_htable_data))))
-		return (NULL);
+	new = (t_htable_data *)ft_memalloc(sizeof(t_htable_data));
 	new->key = key;
 	new->value = value;
 	return (new);

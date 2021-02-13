@@ -44,8 +44,7 @@ char		t_buffer_getchar(t_buffer *buf)
 	char	temp[T_BUFFER_GETCHAR_BUFFSIZE + 1];
 	int		has_read;
 
-	//ft_memset(temp, 0, T_BUFFER_GETCHAR_BUFFSIZE + 1);
-	temp[T_BUFFER_GETCHAR_BUFFSIZE] = '\0';
+	ft_memset(temp, 0, T_BUFFER_GETCHAR_BUFFSIZE + 1);
 	if ((has_read = read(STDIN_FILENO, temp, T_BUFFER_GETCHAR_BUFFSIZE)) == -1)
 		handle_error("Can't read STDIN");
 	if (!has_read)

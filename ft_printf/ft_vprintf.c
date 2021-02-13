@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-static void	print_format(const char *format, va_list *ap, int *i)
+static int	print_format(const char *format, va_list *ap, int *i)
 {
 	if (!g_v.type_spec && g_v.len_format && format[*i + g_v.len_format + 1])
 	{
@@ -35,6 +35,7 @@ static void	print_format(const char *format, va_list *ap, int *i)
 		printf_cspr(ap);
 	else if (g_v.type_spec == 'f')
 		printf_f(ap);
+	return (1);
 }
 
 static void	initializer(int *i, int *flag_to_print,
@@ -65,8 +66,7 @@ int			ft_vdprintf(int fd, const char *format, va_list *ap)
 		}
 		if (!flag_to_print && f_set_globals_default())
 		{
-			if (handle_format(format, ap, &i))
-				print_format(format, ap, &i);
+			handle_format(format, ap, &i) ? print_format(format, ap, &i) : 0;
 			i += g_v.len_format + 1;
 		}
 	}
@@ -92,8 +92,7 @@ int			ft_vasprintf(char **s, const char *format, va_list *ap)
 		}
 		if (!flag_to_print && f_set_globals_default())
 		{
-			if (handle_format(format, ap, &i))
-				print_format(format, ap, &i);
+			handle_format(format, ap, &i) ? print_format(format, ap, &i) : 0;
 			i += g_v.len_format + 1;
 		}
 	}

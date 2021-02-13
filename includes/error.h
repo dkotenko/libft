@@ -22,6 +22,4 @@
 # define ERR_INV_QUOTE_SYMBOL "Invalid quote symbol"
 # define ERR_MALLOC_SIZE "Invalid malloc size"
 
-# include "libft.h"
-
 #endif

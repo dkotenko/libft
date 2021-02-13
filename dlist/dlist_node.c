@@ -16,9 +16,7 @@ t_dlist_node		*t_dlist_node_new(void *data, int size)
 {
 	t_dlist_node	*new;
 
-	new = (t_dlist_node *)malloc(sizeof(t_dlist_node));
-	if (!new)
-		return (NULL);
+	new = (t_dlist_node *)ft_memalloc(sizeof(t_dlist_node));
 	new->data = data;
 	new->prev = NULL;
 	new->next = NULL;
@@ -72,6 +70,7 @@ t_dlist_node		*t_dlist_push(t_dlist *list, t_dlist_node *new)
 	{
 		list->head = new;
 		list->tail = new;
+		list->size++;
 	}
 	else
 	{

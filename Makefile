@@ -124,6 +124,7 @@ string/ft_strchrvar.c \
 string/ft_strreplace.c \
 dlist/dlist.c \
 dlist/dlist_node.c \
+dlist/dlist_free.c \
 ft_printf/ft_printf.c \
 ft_printf/ft_printf_cspr.c \
 ft_printf/ft_printf_diouxxb_printer.c \
