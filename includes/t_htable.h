@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 12:07:29 by edrowzee          #+#    #+#             */
-/*   Updated: 2021/02/07 00:14:37 by clala            ###   ########.fr       */
+/*   Updated: 2021/03/13 14:26:30 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int						t_htable_set(t_htable *table, void *key, void *value);
 */
 t_htable_data			*t_htable_data_create(void *key, void *value);
 void					t_htable_data_free(t_htable_data *data);
+void					t_htable_clean_all(t_htable *table);
 
 /*
 **	t_htable.c

@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2021/02/07 00:05:09 by clala            ###   ########.fr       */
+/*   Updated: 2021/03/13 20:37:01 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,19 @@ void				t_htable_data_free(t_htable_data *data)
 	free(data->value);
 	free(data);
 	data = NULL;
+}
+
+void				t_htable_clean_all(t_htable *table)
+{
+	char			**keys;
+	char			**keys_head;
+
+	keys = (char **)t_htable_get_keys(table);
+	keys_head = keys;
+	while (*keys)
+	{
+		t_htable_remove(table, *keys);
+		keys++;
+	}
+	free(keys_head);
 }

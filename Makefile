@@ -6,7 +6,7 @@
 #    By: clala <clala@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/12/15 16:58:46 by clala             #+#    #+#              #
-#    Updated: 2021/03/06 20:39:48 by clala            ###   ########.fr        #
+#    Updated: 2021/03/06 20:47:37 by clala            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ HEADERS=includes/libft.h
 
 include list.mak
 OBJ=$(SRCS:.c=.o)
-D_FILE = $(patsubst %.c,%.d,$(SRCS))
 INCLUDES=-I./includes
 
 CC=gcc -Wall -Wextra -Werror
@@ -35,12 +34,12 @@ $(NAME): $(OBJ)
 	@echo =================================	
 
 %.o:%.c $(HEADERS)
-	@$(CC) $(INCLUDES) -c $< -o $@ -MD
+	@$(CC) $(INCLUDES) -c $< -o $@
 	@echo $<
 
 		
 clean:
-	/bin/rm -f $(OBJ) $(D_FILE)
+	/bin/rm -f $(OBJ)
 fclean: clean
 	/bin/rm -f $(NAME)
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2021/02/07 00:03:41 by clala            ###   ########.fr       */
+/*   Updated: 2021/03/13 15:54:01 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,13 @@ int					t_htable_set(t_htable *table, void *key, void *value)
 	t_hash			hash;
 
 	hash = t_htable_find(table, key);
-	if (table->table[hash] && table->table[hash]->value)
-		free(table->table[hash]->value);
-	table->table[hash]->value = value;
+	if (table->table[hash])
+	{
+		if (table->table[hash]->value)
+			free(table->table[hash]->value);
+		table->table[hash]->value = value;
+	}
+	else
+		t_htable_add(&table, key, value);
 	return (1);
 }
