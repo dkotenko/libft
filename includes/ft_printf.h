@@ -27,7 +27,35 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <stdint.h>
-# include "./libft.h"
+# include "./libft_basic.h"
+
+typedef union			u_double
+{
+	double				val;
+	char				s[sizeof(double)];
+}						t_dbl;
+
+typedef union			u_long_double
+{
+	long double			val;
+	char				s[sizeof(long double)];
+}						t_ldbl;
+
+typedef struct			s_double
+{
+	char				sign;
+	short				exponent;
+	uintmax_t			mantissa;
+	t_dbl				dbl;
+}						t_double;
+
+typedef struct			s_long_double
+{
+	char				sign;
+	short				exponent;
+	uintmax_t			mantissa;
+	t_ldbl				ldbl;
+}						t_long_double;
 
 typedef struct			s_var
 {

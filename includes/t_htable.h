@@ -13,7 +13,7 @@
 #ifndef T_HTABLE_H
 # define T_HTABLE_H
 
-# include "libft.h"
+# include "libft_basic.h"
 # include <stdlib.h>
 # include <string.h>
 # include <stdint.h>

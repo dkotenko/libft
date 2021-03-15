@@ -13,7 +13,7 @@
 #ifndef T_BUFFER_H
 # define T_BUFFER_H
 
-# include "libft.h"
+# include "libft_basic.h"
 # define T_BUFFER_BUFF_SIZE 0xFF
 # define T_BUFFER_GETCHAR_BUFFSIZE 1
 

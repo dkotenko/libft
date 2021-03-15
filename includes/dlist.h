@@ -13,7 +13,7 @@
 #ifndef DLIST_H
 # define DLIST_H
 
-# include "libft.h"
+# include "libft_basic.h"
 
 typedef struct			s_dlist_node
 {

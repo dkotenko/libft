@@ -16,6 +16,6 @@ int		*ft_intarrnew(int size)
 {
 	int *arr;
 
-	arr = (int *)malloc(sizeof(int) * size);
+	arr = (int *)ft_memalloc(sizeof(int) * size);
 	return (arr);
 }
