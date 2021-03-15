@@ -8,5 +8,5 @@ Summary:  The aim of this project is to code a C library regrouping usual functi
 - dlist           - double-linked list basic functions
 - get_next_line   - from 42 school project "get_next_line", a C getline() implementation
 - ft_printf       - from 42 school project "ft_printf", a C printf() implementation
-
+- htable          - hash table implementation
 
