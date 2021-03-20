@@ -18,10 +18,8 @@ t_htable		*t_htable_resize(t_htable *table)
 	int			next_size;
 	int			i;
 
-	
 	next_size = get_prime_size(table->size * 2);
-	if (!(new = t_htable_create(next_size)))
-		return (NULL);
+	new = t_htable_create(next_size);
 	new->hash = table->hash;
 	new->cmp = table->cmp;
 	i = -1;
@@ -33,7 +31,7 @@ t_htable		*t_htable_resize(t_htable *table)
 			table->table[i]->value);
 		}
 	}
-	t_htable_free(table);
+	//t_htable_free(table);
 	return (new);
 }
 

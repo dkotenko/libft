@@ -80,7 +80,7 @@ t_hash					t_htable_find(t_htable *table, void *key);
 int						t_htable_contains(t_htable *table, void *key);
 void					*t_htable_get(t_htable *table, void *key);
 int						t_htable_remove(t_htable *table, void *key);
-int						t_htable_set(t_htable *table, void *key, void *value);
+ int						t_htable_set(t_htable **table, void *key, void *value);
 
 /*
 **	t_htable_data.c

@@ -11,8 +11,19 @@
 # **************************************************************************** #
 
 NAME=libft.a
-HEADERS=includes/libft.h
+HEADERS_DIR = includes
+HEADERS_NAMES=libft.h \
+dlist.h \
+error.h \
+ft_printf.h \
+get_next_line.h \
+keys.h \
+libft.h \
+libft_basic.h \
+t_buffer.h \
+t_htable.h
 
+HEADERS = $(addprefix $(HEADERS_DIR)/, $(HEADERS_NAMES))
 include list.mak
 OBJ=$(SRCS:.c=.o)
 INCLUDES=-I./includes

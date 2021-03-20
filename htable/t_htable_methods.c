@@ -57,18 +57,24 @@ int					t_htable_remove(t_htable *table, void *key)
 	return (1);
 }
 
-int					t_htable_set(t_htable *table, void *key, void *value)
+int					t_htable_set(t_htable **t, void *key, void *value)
 {
 	t_hash			hash;
+	t_htable			*table;
 
+	if (t_htable_add(t, key, value))
+		return (1);
+	table = *t;
 	hash = t_htable_find(table, key);
 	if (table->table[hash])
 	{
 		if (table->table[hash]->value)
+		{
 			free(table->table[hash]->value);
+			free(table->table[hash]->key);
+		}
 		table->table[hash]->value = value;
+		table->table[hash]->key = key;
 	}
-	else
-		t_htable_add(&table, key, value);
 	return (1);
 }

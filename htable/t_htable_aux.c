@@ -44,11 +44,10 @@ void			t_htable_free(t_htable *table)
 {
 	int			i;
 
-	i = table->real_size;
-	while (--i > -1)
+	i = -1;
+	while (++i < table->counter)
 	{
-		if (table->table[i])
-			free(table->table[i]);
+		free(table->table[table->curr_data[i]]);
 	}
 	free(table->curr_data);
 	free(table->table);
