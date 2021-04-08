@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strndup.c                                       :+:      :+:    :+:   */
+/*   ft_create2dchararr.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/26 20:44:53 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 21:53:21 by clala            ###   ########.fr       */
+/*   Created: 2019/11/26 20:43:37 by clala             #+#    #+#             */
+/*   Updated: 2020/02/15 22:02:50 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft_basic.h"
 
-char		*ft_strndup(const char *src, size_t n)
+char		**ft_copy2dchararr(char **src)
 {
-	char	*dst;
-	size_t	i;
+	int		len_2d;
+	char	**new;
+	int		i;
 
-	if (!(dst = ft_strnew(ft_strnlen(src, n))))
-		return (NULL);
-	i = 0;
-	while (i < n)
+	len_2d = len_2dchararr_terminated(src);
+	new = ft_memalloc(sizeof(char *) * (len_2d + 1));
+	i = -1;
+	while (src[++i])
 	{
-		dst[i] = src[i];
-		i++;
+		new[i] = ft_strdup(src[i]);
 	}
-	dst[i] = '\0';
-	return (dst);
+	return (new);
+
 }

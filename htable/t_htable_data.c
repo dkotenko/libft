@@ -24,8 +24,20 @@ t_htable_data		*t_htable_data_create(void *key, void *value)
 
 void				t_htable_data_free(t_htable_data *data)
 {
-	free(data->key);
-	free(data->value);
+	if (!data)
+		return ;
+	if (data->key)
+	{
+		ft_putendl(data->key);
+		free(data->key);
+		
+	}
+	
+	if (data->value)
+	{
+		ft_putendl("444");	
+		free(data->value);
+	}
 	free(data);
 	data = NULL;
 }

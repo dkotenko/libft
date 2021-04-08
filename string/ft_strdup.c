@@ -17,18 +17,13 @@ char	*ft_strdup(const char *src)
 	char			*dupl;
 	unsigned int	len;
 
-	len = 0;
-	while (src[len])
-		len++;
-	dupl = (char *)malloc(sizeof(char) * (len + 1));
-	if (!dupl)
-		return (NULL);
+	len = ft_strlen(src);
+	dupl = ft_strnew(len);
 	len = 0;
 	while (src[len])
 	{
 		dupl[len] = src[len];
 		len++;
 	}
-	dupl[len] = '\0';
 	return (dupl);
 }

@@ -44,7 +44,7 @@ int					t_htable_remove(t_htable *table, void *key)
 
 	if (!(hash = t_htable_find(table, key)))
 		return (0);
-	t_htable_data_free(t_htable_get(table, key));
+	t_htable_data_free(table->table[hash]);
 	i = -1;
 	while (++i < table->counter)
 	{
@@ -68,11 +68,9 @@ int					t_htable_set(t_htable **t, void *key, void *value)
 	hash = t_htable_find(table, key);
 	if (table->table[hash])
 	{
+		free(table->table[hash]->key);
 		if (table->table[hash]->value)
-		{
 			free(table->table[hash]->value);
-			free(table->table[hash]->key);
-		}
 		table->table[hash]->value = value;
 		table->table[hash]->key = key;
 	}

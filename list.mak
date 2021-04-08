@@ -1,4 +1,5 @@
 SRCS=arrays/ft_create2dchararr.c \
+arrays/ft_copy2dchararr.c \
 bint/ft_bintaddtn.c \
 bint/ft_bintcmp.c \
 bint/ft_bintdivsn.c \

@@ -42,6 +42,7 @@ typedef struct			s_point
 int						free_2dchararr_terminated(char **arr);
 int						len_2dchararr_terminated(char **arr);
 int						print_2dchararr_terminated(char **arr);
+char					**ft_copy2dchararr(char **src);
 /*
 **	arrays
 */
