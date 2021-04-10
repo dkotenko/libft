@@ -47,3 +47,22 @@ void			t_buffer_free(t_buffer **buf)
 	free(*buf);
 	*buf = NULL;
 }
+
+int			t_buffer_writen(t_buffer *buf, const char *str, int n)
+{
+	int		i;
+
+	if (!buf || !str || n < 1)
+		return (0);
+	i = 0;
+	if (str && str[i])
+	{
+		while (buf->i + n >= buf->size)
+			t_buffer_add_size(buf);
+		while (str[i] && i < n)
+		{
+			buf->s[buf->i++] = str[i++];
+		}
+	}
+	return (i);
+}

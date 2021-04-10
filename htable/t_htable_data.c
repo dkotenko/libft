@@ -27,17 +27,9 @@ void				t_htable_data_free(t_htable_data *data)
 	if (!data)
 		return ;
 	if (data->key)
-	{
-		ft_putendl(data->key);
 		free(data->key);
-		
-	}
-	
 	if (data->value)
-	{
-		ft_putendl("444");	
 		free(data->value);
-	}
 	free(data);
 	data = NULL;
 }
