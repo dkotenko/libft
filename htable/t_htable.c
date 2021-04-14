@@ -31,7 +31,7 @@ t_htable		*t_htable_resize(t_htable *table)
 			table->table[i]->value);
 		}
 	}
-	//t_htable_free(table);
+	t_htable_free(table);
 	return (new);
 }
 
