@@ -29,19 +29,19 @@
 # include <stdint.h>
 # include "./libft_basic.h"
 
-typedef union			u_double
+typedef union u_double
 {
 	double				val;
 	char				s[sizeof(double)];
 }						t_dbl;
 
-typedef union			u_long_double
+typedef union u_long_double
 {
 	long double			val;
 	char				s[sizeof(long double)];
 }						t_ldbl;
 
-typedef struct			s_double
+typedef struct s_double
 {
 	char				sign;
 	short				exponent;
@@ -49,7 +49,7 @@ typedef struct			s_double
 	t_dbl				dbl;
 }						t_double;
 
-typedef struct			s_long_double
+typedef struct s_long_double
 {
 	char				sign;
 	short				exponent;
@@ -57,7 +57,7 @@ typedef struct			s_long_double
 	t_ldbl				ldbl;
 }						t_long_double;
 
-typedef struct			s_var
+typedef struct s_var
 {
 	int					plus_sign;
 	int					space_sign;
@@ -76,14 +76,14 @@ typedef struct			s_var
 	int					c_zero;
 }						t_var;
 
-typedef struct			s_buf
+typedef struct s_buf
 {
 	char				*s;
 	int					i;
 	int					len;
 }						t_buf;
 
-typedef union			u_data
+typedef union u_data
 {
 	signed char			char_;
 	signed short		short_;

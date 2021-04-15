@@ -14,8 +14,6 @@
 
 # define LIBFT_H
 
-
-
 # include "libft_basic.h"
 # include "get_next_line.h"
 # include "dlist.h"

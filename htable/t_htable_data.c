@@ -12,7 +12,7 @@
 
 #include "../includes/t_htable.h"
 
-t_htable_data		*t_htable_data_create(void *key, void *value)
+t_htable_data	*t_htable_data_create(void *key, void *value)
 {
 	t_htable_data	*new;
 
@@ -22,7 +22,7 @@ t_htable_data		*t_htable_data_create(void *key, void *value)
 	return (new);
 }
 
-void				t_htable_data_free(t_htable_data *data)
+void	t_htable_data_free(t_htable_data *data)
 {
 	if (!data)
 		return ;
@@ -34,7 +34,7 @@ void				t_htable_data_free(t_htable_data *data)
 	data = NULL;
 }
 
-void				t_htable_clean_all(t_htable *table)
+void	t_htable_clean_all(t_htable *table)
 {
 	char			**keys;
 	char			**keys_head;

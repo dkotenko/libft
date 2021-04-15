@@ -16,7 +16,7 @@
 ** returns pointer to a value
 */
 
-void		*t_htable_get(t_htable *table, void *key)
+void	*t_htable_get(t_htable *table, void *key)
 {
 	t_hash	hash;
 
@@ -30,7 +30,7 @@ void		*t_htable_get(t_htable *table, void *key)
 ** returns an array of pointers to values
 */
 
-void		**t_htable_get_values(t_htable *table)
+void	**t_htable_get_values(t_htable *table)
 {
 	void	**new;
 	int		i;
@@ -50,7 +50,7 @@ void		**t_htable_get_values(t_htable *table)
 ** returns an array of pointers to keys
 */
 
-void		**t_htable_get_keys(t_htable *table)
+void	**t_htable_get_keys(t_htable *table)
 {
 	void	**new;
 	int		i;
@@ -70,7 +70,7 @@ void		**t_htable_get_keys(t_htable *table)
 ** returns an array of arrays of pointers to keys and values
 */
 
-void		***t_htable_get_keys_values(t_htable *table)
+void	***t_htable_get_keys_values(t_htable *table)
 {
 	void	***new;
 	int		i;

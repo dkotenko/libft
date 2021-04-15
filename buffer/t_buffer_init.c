@@ -12,7 +12,7 @@
 
 #include "t_buffer.h"
 
-void			t_buffer_add_size(t_buffer *buf)
+void	t_buffer_add_size(t_buffer *buf)
 {
 	char		*new;
 	int			i;
@@ -25,18 +25,19 @@ void			t_buffer_add_size(t_buffer *buf)
 	buf->s = new;
 }
 
-t_buffer		*t_buffer_create(int size)
+t_buffer	*t_buffer_create(int size)
 {
 	t_buffer	*buf;
 
-	size = !size ? T_BUFFER_BUFF_SIZE : size;
+	if (!size)
+		size = T_BUFFER_BUFF_SIZE;
 	buf = (t_buffer *)ft_memalloc(sizeof(t_buffer));
 	buf->s = ft_strnew(size);
 	buf->size = size;
 	return (buf);
 }
 
-void			t_buffer_free(t_buffer **buf)
+void	t_buffer_free(t_buffer **buf)
 {
 	if (!*buf)
 		return ;
@@ -48,7 +49,7 @@ void			t_buffer_free(t_buffer **buf)
 	*buf = NULL;
 }
 
-int			t_buffer_writen(t_buffer *buf, const char *str, int n)
+int	t_buffer_writen(t_buffer *buf, const char *str, int n)
 {
 	int		i;
 

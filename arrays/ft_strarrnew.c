@@ -19,14 +19,13 @@ static void	free_arr(char **arr, int i)
 	free(arr);
 }
 
-char		**ft_strarrnew(int x, int y)
+char	**ft_strarrnew(int x, int y)
 {
 	char	**arr;
 	int		i;
 
 	i = 0;
-	if (!(arr = (char **)malloc(sizeof(char *) * y)))
-		return (NULL);
+	arr = (char **)ft_memalloc(sizeof(char *) * y);
 	while (i < y)
 	{
 		arr[i] = ft_strnew(x);

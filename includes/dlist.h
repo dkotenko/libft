@@ -15,7 +15,7 @@
 
 # include "libft_basic.h"
 
-typedef struct			s_dlist_node
+typedef struct s_dlist_node
 {
 	struct s_dlist_node	*next;
 	struct s_dlist_node	*prev;
@@ -25,7 +25,7 @@ typedef struct			s_dlist_node
 
 typedef void (*t_free_node)(t_dlist_node *);
 
-typedef struct			s_dlist
+typedef struct s_dlist
 {
 	struct s_dlist_node	*head;
 	struct s_dlist_node	*tail;
@@ -39,7 +39,7 @@ t_dlist_node			*t_dlist_insert_before(t_dlist *list,
 							t_dlist_node *node, t_dlist_node *new);
 t_dlist_node			*t_dlist_push(t_dlist *list, t_dlist_node *new);
 t_dlist_node			*t_dlist_append(t_dlist *list, t_dlist_node *new);
-t_dlist					*t_dlist_new();
+t_dlist					*t_dlist_new(void);
 t_dlist_node			*t_dlist_pop(t_dlist *list, t_dlist_node *node);
 t_dlist					*t_dlist_remove_node(t_dlist *list, t_dlist_node *node);
 void					t_dlist_node_free(void (*free_func)(t_dlist_node *),

@@ -25,9 +25,9 @@ char	*ft_itoa_base(int value, int base)
 		return (0);
 	if (value < 0 && base == 10)
 		flag = 1;
-	tmp = value;
-	while (tmp /= base)
-		size++;
+	tmp = value / base;
+	while (tmp && ++size)
+		tmp /= base;
 	size = size + flag + 1;
 	str = (char *)malloc(sizeof(char) * (size + 1));
 	str[size] = '\0';

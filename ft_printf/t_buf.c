@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void		t_buf_add_size(t_buf *buf)
+void	t_buf_add_size(t_buf *buf)
 {
 	char	*new;
 	int		i;
@@ -30,29 +30,28 @@ void		t_buf_add_size(t_buf *buf)
 	buf->s = new;
 }
 
-t_buf		*t_buf_create(int size)
+t_buf	*t_buf_create(int size)
 {
 	t_buf	*buf;
 
 	buf = (t_buf *)ft_memalloc(sizeof(t_buf));
 	if (!size)
 		size = T_BUFFER_BUFF_SIZE;
-	if (!(buf->s = ft_strnew(size)))
-		return (NULL);
+	buf->s = ft_strnew(size);
 	buf->i = 0;
 	buf->len = size;
 	return (buf);
 }
 
-void		t_buf_free(t_buf **buf)
+void	t_buf_free(t_buf **buf)
 {
 	free((*buf)->s);
 	free(*buf);
 }
 
-int			t_buf_len(char *s)
+int	t_buf_len(char *s)
 {
-	size_t len;
+	size_t	len;
 
 	f_set_globals_default();
 	if (g_v.c_zero)
@@ -60,16 +59,21 @@ int			t_buf_len(char *s)
 		len = 0;
 		while (g_v.c_zero > 0)
 		{
-			g_v.c_zero = s[len] ? g_v.c_zero : g_v.c_zero - 1;
-			len = s[len] ? len + ft_strlen(s + len) : len + 1;
+			if (s[len] == 0)
+				g_v.c_zero--;
+			if (s[len])
+				len = len + ft_strlen(s + len);
+			else
+				len++;
 		}
-		len = s[len] ? len + ft_strlen(s + len) : len;
+		if (s[len])
+			len += ft_strlen(s + len);
 		return (len);
 	}
 	return (ft_strlen(s));
 }
 
-int			t_buf_write(t_buf *buf, const char *str, int len)
+int	t_buf_write(t_buf *buf, const char *str, int len)
 {
 	int	i;
 

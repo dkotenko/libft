@@ -12,7 +12,7 @@
 
 #include "../includes/t_htable.h"
 
-t_hash				t_htable_find(t_htable *table, void *key)
+t_hash	t_htable_find(t_htable *table, void *key)
 {
 	t_hash			hash;
 	t_hash			i;
@@ -30,19 +30,20 @@ t_hash				t_htable_find(t_htable *table, void *key)
 	return (0);
 }
 
-int					t_htable_contains(t_htable *table, void *key)
+int	t_htable_contains(t_htable *table, void *key)
 {
 	if (t_htable_find(table, key))
 		return (1);
 	return (0);
 }
 
-int					t_htable_remove(t_htable *table, void *key)
+int	t_htable_remove(t_htable *table, void *key)
 {
 	t_hash			hash;
 	int				i;
 
-	if (!(hash = t_htable_find(table, key)))
+	hash = t_htable_find(table, key);
+	if (!hash)
 		return (0);
 	t_htable_data_free(table->table[hash]);
 	i = -1;
@@ -57,10 +58,10 @@ int					t_htable_remove(t_htable *table, void *key)
 	return (1);
 }
 
-int					t_htable_set(t_htable **t, void *key, void *value)
+int	t_htable_set(t_htable **t, void *key, void *value)
 {
 	t_hash			hash;
-	t_htable			*table;
+	t_htable		*table;
 
 	if (t_htable_add(t, key, value))
 		return (1);

@@ -12,17 +12,17 @@
 
 #include "libft.h"
 
-char		**ft_create2dchararr(int rows, int cols)
+char	**ft_create2dchararr(int rows, int cols)
 {
 	char	**new;
 	int		i;
 
-	if (!(new = (char **)malloc(sizeof(char *) * (rows + 1))))
-		return (NULL);
+	new = (char **)ft_memalloc(sizeof(char *) * (rows + 1));
 	i = 0;
 	while (i < rows)
 	{
-		if (!(new[i] = ft_strnew(cols)))
+		new[i] = ft_strnew(cols);
+		if (!new[i])
 		{
 			ft_free2dchararr(new, i);
 			return (NULL);

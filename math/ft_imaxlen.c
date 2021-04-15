@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_imaxlen(intmax_t n)
+int	ft_imaxlen(intmax_t n)
 {
 	int	i;
 

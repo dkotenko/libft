@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			is_banking_rounding(char *decimal, int prec)
+static int	is_bank_rnd(char *decimal, int prec)
 {
 	int		i;
 
@@ -34,25 +34,35 @@ int			is_banking_rounding(char *decimal, int prec)
 	return (0);
 }
 
+static int	get_prec(int prec)
+{
+	if (prec < 0)
+		prec = 6;
+	return (prec);
+}
+
 static char	*ft_bintround(char *num, int prec)
 {
 	int32_t	decimals;
 	char	*decpt;
 
 	num = ft_strdup(num);
-	prec = (prec >= 0) ? prec : 6;
-	if ((decpt = ft_strchr(num, '.')))
+	prec = get_prec(prec);
+	decpt = ft_strchr(num, '.');
+	if (decpt)
 	{
 		decimals = (ft_strlen(num) - 1) - (decpt - num);
 		if (decimals > prec || prec == 0)
 		{
-			if (is_banking_rounding(decpt, prec) ||
-					ft_ctoi(*(decpt + prec + 1)) > 5)
+			if (is_bank_rnd(decpt, prec) || ft_ctoi(*(decpt + prec + 1)) > 5)
 				num = ft_bintaddtn(num, ft_ldtoa(ft_pow(10, -prec), prec));
 		}
 		else
 			num = ft_strjoinfree(num, ft_strnewchr(prec - decimals, '0'), 1, 1);
-		num[(ft_strchr(num, '.') - num) + ((prec) ? prec + 1 : 0)] = '\0';
+		if (prec)
+			num[(ft_strchr(num, '.') - num) + prec + 1] = '\0';
+		else
+			num[(ft_strchr(num, '.') - num) + 0] = '\0';
 	}
 	else if (prec)
 		num = ft_strjoinfree(ft_strjoinfree(num, ".", 1, 0),
@@ -60,7 +70,7 @@ static char	*ft_bintround(char *num, int prec)
 	return (num);
 }
 
-char		*ft_bintroundfree(char *num, int precision, int free_num)
+char	*ft_bintroundfree(char *num, int precision, int free_num)
 {
 	char	*str;
 

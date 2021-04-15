@@ -17,7 +17,7 @@
 #define MAX15BITS       0x7FFF
 #define LDBL_MASK         9223372036854775808u
 
-static char			*ldouble_is_exception(t_long_double num)
+static char	*ldouble_is_exception(t_long_double num)
 {
 	char			*str;
 	int				ldbl_exponent_max;
@@ -36,7 +36,7 @@ static char			*ldouble_is_exception(t_long_double num)
 	return (str);
 }
 
-char				*ft_ldtoa(long double n, int precision)
+char	*ft_ldtoa(long double n, int precision)
 {
 	t_long_double	num;
 	char			*str;
@@ -46,9 +46,10 @@ char				*ft_ldtoa(long double n, int precision)
 	num.exponent = (*(short *)&num.ldbl.s[8]
 			& MAX15BITS) - BIAS - LDBL_MANT_WIDTH;
 	num.mantissa = *(intmax_t *)num.ldbl.s;
-	precision = (precision >= 0) ? precision : 6;
-	str = NULL;
-	if ((str = ldouble_is_exception(num)))
+	if (precision < 0)
+		precision = 6;
+	str = ldouble_is_exception(num);
+	if (str)
 		return (str);
 	str = ft_ultoa_base(num.mantissa, 10);
 	if (num.exponent > 0)

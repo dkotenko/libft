@@ -12,7 +12,7 @@
 
 void	ft_strswap(char **a, char **b)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = *a;
 	*a = *b;

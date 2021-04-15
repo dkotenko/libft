@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		free_2dchararr_terminated(char **arr)
+int	free_2dchararr_terminated(char **arr)
 {
 	int	i;
 
@@ -24,7 +24,7 @@ int		free_2dchararr_terminated(char **arr)
 	return (1);
 }
 
-int		len_2dchararr_terminated(char **arr)
+int	len_2dchararr_terminated(char **arr)
 {
 	int	i;
 
@@ -36,7 +36,7 @@ int		len_2dchararr_terminated(char **arr)
 	return (i);
 }
 
-int		print_2dchararr_terminated(char **arr)
+int	print_2dchararr_terminated(char **arr)
 {
 	while (*arr)
 	{

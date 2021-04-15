@@ -17,8 +17,12 @@ double	ft_pow(double x, double y)
 
 	if (y == 0)
 		return (1.0);
-	sign = (x < 0) ? -1.0 : 1.0;
-	x = (x < 0) ? (-x) : (x);
+	if (x < 0)
+		sign = -1.0;
+	else
+		sign = 1.0;
+	if (x < 0)
+		x = -x;
 	val = x;
 	if (y < 0)
 	{

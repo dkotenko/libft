@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-int			ft_imax(char *format, ...)
+int	ft_imax(char *format, ...)
 {
 	int		n;
 	int		i;
 	int		max;
 	int		arg;
-	va_list ap;
+	va_list	ap;
 
 	va_start(ap, format);
 	n = ft_ctoi(format[0]);
@@ -27,7 +27,8 @@ int			ft_imax(char *format, ...)
 	while (i < n)
 	{
 		arg = va_arg(ap, int);
-		max = arg > max ? arg : max;
+		if (arg > max)
+			max = arg;
 		i++;
 	}
 	va_end(ap);

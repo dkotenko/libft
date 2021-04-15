@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-int			ft_printf(const char *format, ...)
+int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
 	int		written;
@@ -23,7 +23,7 @@ int			ft_printf(const char *format, ...)
 	return (written);
 }
 
-int			ft_dprintf(int fd, const char *format, ...)
+int	ft_dprintf(int fd, const char *format, ...)
 {
 	va_list	ap;
 	int		written;
@@ -34,7 +34,7 @@ int			ft_dprintf(int fd, const char *format, ...)
 	return (written);
 }
 
-int			ft_asprintf(char **s, const char *format, ...)
+int	ft_asprintf(char **s, const char *format, ...)
 {
 	int		written;
 	va_list	ap;

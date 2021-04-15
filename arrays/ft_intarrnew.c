@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-int		*ft_intarrnew(int size)
+int	*ft_intarrnew(int size)
 {
-	int *arr;
+	int	*arr;
 
 	arr = (int *)ft_memalloc(sizeof(int) * size);
 	return (arr);

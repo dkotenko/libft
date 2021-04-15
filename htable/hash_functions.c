@@ -12,7 +12,7 @@
 
 #include "../includes/t_htable.h"
 
-unsigned long long		hash_func_fnv_1a_64(void *key, int size)
+unsigned long long	hash_func_fnv_1a_64(void *key, int size)
 {
 	unsigned char		*p;
 	unsigned long long	h;
@@ -32,7 +32,7 @@ unsigned long long		hash_func_fnv_1a_64(void *key, int size)
 	return (h % size);
 }
 
-unsigned int			hash_func_fnv_1a_32(void *key, int size)
+unsigned int	hash_func_fnv_1a_32(void *key, int size)
 {
 	unsigned char		*p;
 	unsigned int		h;
@@ -52,7 +52,7 @@ unsigned int			hash_func_fnv_1a_32(void *key, int size)
 	return (h % size);
 }
 
-unsigned int			hash_func_kernighan_ritchie(void *p, int size)
+unsigned int	hash_func_kernighan_ritchie(void *p, int size)
 {
 	int					i;
 	uintmax_t			hash;
@@ -65,7 +65,7 @@ unsigned int			hash_func_kernighan_ritchie(void *p, int size)
 	i = 0;
 	while (i < len)
 	{
-		hash *= (((hash * (uintmax_t)T_HTABLE_INIT_PRIME_NUMBER)
+		hash *= (((hash * (uintmax_t)T_HTABLE_INIT_PRIME_NUMBER) \
 			+ (uintmax_t)s[i]) % (uintmax_t)size);
 		i++;
 	}

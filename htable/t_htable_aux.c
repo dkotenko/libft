@@ -12,12 +12,12 @@
 
 #include "t_htable.h"
 
-int				cmp_func(const void *a, const void *b)
+int	cmp_func(const void *a, const void *b)
 {
 	return (ft_strcmp((const char *)a, (const char *)b));
 }
 
-int				is_prime_number(int n)
+int	is_prime_number(int n)
 {
 	int			i;
 
@@ -33,14 +33,14 @@ int				is_prime_number(int n)
 	return (1);
 }
 
-int				get_prime_size(int size)
+int	get_prime_size(int size)
 {
 	while (!is_prime_number(size))
 		size++;
 	return (size);
 }
 
-void			t_htable_free(t_htable *table)
+void	t_htable_free(t_htable *table)
 {
 	int			i;
 

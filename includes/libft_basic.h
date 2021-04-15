@@ -21,20 +21,18 @@
 
 # define HEX_CHARS "0123456789ABCDEF"
 
-typedef struct			s_list
+typedef struct s_list
 {
 	void				*content;
 	size_t				content_size;
 	struct s_list		*next;
-}						t_list;
+}	t_list;
 
-
-
-typedef struct			s_point
+typedef struct s_point
 {
 	int					x;
 	int					y;
-}						t_point;
+}	t_point;
 
 /*
 **	2dchararr_terminated
@@ -175,8 +173,8 @@ size_t					ft_strlen(const char *str);
 char					*ft_strncat (char *dest, const char *app, size_t n);
 int						ft_strncmp(const char *s1, const char *s2, size_t n);
 char					*ft_strncpy(char *dest, const char *src, size_t n);
-char					*ft_strnstr(const char *str, const char *substr
-							, size_t n);
+char					*ft_strnstr(const char *str, const char *substr, \
+							size_t n);
 char					*ft_strrchr (const char *str, int ch);
 char					*ft_strstr(const char *str, const char *substr);
 int						ft_tolower(int c);

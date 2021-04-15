@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strtrimstart(char const *s, char *charset)
+char	*ft_strtrimstart(char const *s, char *charset)
 {
 	int		i;
 	char	*str;

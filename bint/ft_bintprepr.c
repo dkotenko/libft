@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static void		normalize_integers(char **arg1, char **arg2)
+static void	normalize_integers(char **arg1, char **arg2)
 {
 	size_t		len_arg1;
 	size_t		len_arg2;
@@ -27,7 +27,17 @@ static void		normalize_integers(char **arg1, char **arg2)
 				*arg1, 1, 1);
 }
 
-static void		normalize_decimals(char **arg1, char **arg2)
+static int	get_decimals_number(char *decimal_pointer, char *arg)
+{
+	int	decimals_number;
+
+	decimals_number = 0;
+	if (decimal_pointer)
+		decimals_number = ft_strlen(arg) - 1 - (decimal_pointer - (arg));
+	return (decimals_number);
+}
+
+static void	normalize_decimals(char **arg1, char **arg2)
 {
 	char		*decpt_1;
 	char		*decpt_2;
@@ -36,26 +46,26 @@ static void		normalize_decimals(char **arg1, char **arg2)
 
 	decpt_1 = ft_strchr(*arg1, '.');
 	decpt_2 = ft_strchr(*arg2, '.');
-	decimals_1 = (decpt_1) ? ft_strlen(*arg1) - 1 - (decpt_1 - (*arg1)) : 0;
-	decimals_2 = (decpt_2) ? ft_strlen(*arg2) - 1 - (decpt_2 - (*arg2)) : 0;
+	decimals_1 = get_decimals_number(decpt_1, *arg1);
+	decimals_2 = get_decimals_number(decpt_2, *arg2);
 	if (decpt_1 && !decpt_2)
-		(*arg2) = ft_strjoinfree(*arg2, ft_strjoinfree(".",
+		(*arg2) = ft_strjoinfree(*arg2, ft_strjoinfree(".", \
 				ft_strnewchr(decimals_1, '0'), 0, 1), 1, 1);
 	else if (!decpt_1 && decpt_2)
-		(*arg1) = ft_strjoinfree(*arg1, ft_strjoinfree(".",
+		(*arg1) = ft_strjoinfree(*arg1, ft_strjoinfree(".", \
 				ft_strnewchr(decimals_2, '0'), 0, 1), 1, 1);
 	else if (decpt_1 && decpt_2)
 	{
 		if (decimals_1 > decimals_2)
-			(*arg2) = ft_strjoinfree(
+			(*arg2) = ft_strjoinfree(\
 				*arg2, ft_strnewchr(decimals_1 - decimals_2, '0'), 1, 1);
 		if (decimals_1 < decimals_2)
-			(*arg1) = ft_strjoinfree(
+			(*arg1) = ft_strjoinfree(\
 				*arg1, ft_strnewchr(decimals_2 - decimals_1, '0'), 1, 1);
 	}
 }
 
-void			ft_bintprepr(char **arg1, char **arg2)
+void	ft_bintprepr(char **arg1, char **arg2)
 {
 	char		*dup_arg1;
 	char		*dup_arg2;
@@ -69,6 +79,12 @@ void			ft_bintprepr(char **arg1, char **arg2)
 	ft_free("2", *arg1, *arg2);
 	normalize_decimals(&dup_arg1, &dup_arg2);
 	normalize_integers(&dup_arg1, &dup_arg2);
-	(*arg1) = (sign_1) ? ft_strjoinfree("-", dup_arg1, 0, 1) : dup_arg1;
-	(*arg2) = (sign_2) ? ft_strjoinfree("-", dup_arg2, 0, 1) : dup_arg2;
+	if (sign_1)
+		(*arg1) = ft_strjoinfree("-", dup_arg1, 0, 1);
+	else
+		(*arg1) = dup_arg1;
+	if (sign_2)
+		(*arg2) = ft_strjoinfree("-", dup_arg2, 0, 1);
+	else
+		(*arg2) = dup_arg2;
 }

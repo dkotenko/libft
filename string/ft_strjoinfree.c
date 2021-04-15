@@ -15,7 +15,7 @@
 char	*ft_strjoinfree(char const *s1, char const *s2,
 		int free_s1, int free_s2)
 {
-	char *str;
+	char	*str;
 
 	str = ft_strjoin(s1, s2);
 	if (free_s1 && s1)

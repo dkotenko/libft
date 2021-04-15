@@ -47,8 +47,7 @@ static char	*word_to_array(int start, int end, char *s, char *arrs)
 {
 	int		j;
 
-	if (!(arrs = (char *)ft_strnew(end - start + 1)))
-		return (NULL);
+	arrs = (char *)ft_strnew(end - start + 1);
 	j = 0;
 	while (start < end)
 		arrs[j++] = s[start++];
@@ -73,7 +72,8 @@ static int	copy_words(char *s, char c, char **arr)
 			break ;
 		while (s[i] && (char)s[i] != c)
 			i++;
-		if (!(arr[count] = word_to_array(start, i, (char *)s, arr[count])))
+		arr[count] = word_to_array(start, i, (char *)s, arr[count]);
+		if (!(arr[count]))
 		{
 			free_arr(&arr);
 			return (0);
@@ -84,13 +84,14 @@ static int	copy_words(char *s, char c, char **arr)
 	return (1);
 }
 
-char		**ft_strsplit(char const *s, char c)
+char	**ft_strsplit(char const *s, char c)
 {
 	char	**arr;
 
-	if (!s || !c || !(arr = (char **)malloc(sizeof(char *) *
-		(words(s, c) + 1))))
+	if (!s || !c)
 		return (NULL);
+	arr = (char **)ft_memalloc(sizeof(char *) * \
+		(words(s, c) + 1));
 	if (!copy_words((char *)s, c, arr))
 		return (NULL);
 	return (arr);

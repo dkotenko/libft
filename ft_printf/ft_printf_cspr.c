@@ -12,17 +12,19 @@
 
 #include "../includes/ft_printf.h"
 
-static void	printf_s(va_list *ap)
+static void	printf_s(char *s)
 {
-	char	*s;
 	int		len;
 
-	if (!(s = va_arg(*ap, char	*)))
+	if (!s)
 		s = (char *)"(null)";
 	len = ft_strlen(s);
 	s = ft_strdup(s);
-	if (g_v.precis > -1 && g_v.precis < len && !(s[g_v.precis] = '\0'))
+	if (g_v.precis > -1 && g_v.precis < len)
+	{
+		s[g_v.precis] = '\0';
 		len = g_v.precis;
+	}
 	if (g_v.minus_flag)
 	{
 		t_buf_write(g_buf, s, len);
@@ -70,7 +72,8 @@ static void	printf_p_right(int len, void *x, char *s)
 		g_v.precis--;
 		t_buf_write(g_buf, "0", 1);
 	}
-	!x && !g_v.precis ? 1 : t_buf_write(g_buf, s, len);
+	if (x || g_v.precis)
+		t_buf_write(g_buf, s, len);
 	while (g_v.width-- > len)
 	{
 		g_v.width--;
@@ -88,7 +91,8 @@ static void	printf_p(va_list *ap)
 	s = ft_strlwr(ft_uiptrtoa_base((uintptr_t)x, 16));
 	len = ft_strlen(s);
 	g_v.width -= 2;
-	g_v.width = g_v.width > 0 ? g_v.width : 0;
+	if (g_v.width < 0)
+		g_v.width = 0;
 	if (g_v.minus_flag)
 	{
 		t_buf_write(g_buf, "0x", 2);
@@ -106,12 +110,17 @@ static void	printf_p(va_list *ap)
 	free(s);
 }
 
-void		printf_cspr(va_list *ap)
+void	printf_cspr(va_list *ap)
 {
+	char	*s;
+
 	if (g_v.type_spec == 'c')
 		printf_c(ap);
 	else if (g_v.type_spec == 's')
-		printf_s(ap);
+	{
+		s = va_arg(*ap, char *);
+		printf_s(s);
+	}
 	else if (g_v.type_spec == 'p')
 		printf_p(ap);
 	else if (g_v.type_spec == 'r')

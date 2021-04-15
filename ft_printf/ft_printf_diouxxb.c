@@ -12,7 +12,7 @@
 
 #include "../includes/ft_printf.h"
 
-static int		get_base(void)
+static int	get_base(void)
 {
 	if (g_v.type_spec == 'o')
 		return (8);
@@ -24,20 +24,30 @@ static int		get_base(void)
 		return (10);
 }
 
-static char		*get_diouxxb_string(t_data value)
+static char	*handle_diouxxb_string(t_data value)
 {
-	char		*s;
+	char	*s;
 
-	if (!(s = NULL) && (g_v.type_spec == 'd' || g_v.type_spec == 'i'))
+	s = NULL;
+	if (!g_v.size_spec)
+		s = ft_itoa_base(value.int_, get_base());
+	else if (g_v.size_spec == 'l' || g_v.size_spec == 'l' * 2)
+		s = ft_ltoa_base(value.long_, get_base());
+	else if (g_v.size_spec == 'h')
+		s = ft_itoa_base(value.short_, get_base());
+	else if (g_v.size_spec == 'h' * 2)
+		s = ft_itoa_base(value.char_, get_base());
+	return (s);
+}
+
+static char	*get_diouxxb_string(t_data value)
+{
+	char	*s;
+
+	s = NULL;
+	if (g_v.type_spec == 'd' || g_v.type_spec == 'i')
 	{
-		if (!g_v.size_spec)
-			s = ft_itoa_base(value.int_, get_base());
-		else if (g_v.size_spec == 'l' || g_v.size_spec == 'l' * 2)
-			s = ft_ltoa_base(value.long_, get_base());
-		else if (g_v.size_spec == 'h')
-			s = ft_itoa_base(value.short_, get_base());
-		else if (g_v.size_spec == 'h' * 2)
-			s = ft_itoa_base(value.char_, get_base());
+		s = handle_diouxxb_string(value);
 	}
 	else
 	{
@@ -53,15 +63,19 @@ static char		*get_diouxxb_string(t_data value)
 	return (s);
 }
 
-void			printf_diouxxb(va_list *ap)
+void	printf_diouxxb(va_list *ap)
 {
 	char		*s;
 	t_data		value;
 
 	value.intmax_ = va_arg(*ap, intmax_t);
-	g_v.size_spec = g_v.size_spec == 'L' ? 0 : g_v.size_spec;
+	if (g_v.size_spec == 'L')
+		g_v.size_spec = 0;
 	s = get_diouxxb_string(value);
-	s = (g_v.type_spec == 'X' ? ft_strupr(s) : ft_strlwr(s));
+	if (g_v.type_spec == 'X')
+		s = ft_strupr(s);
+	else
+		s = ft_strlwr(s);
 	diouxxb_printer(s);
 	free(s);
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t		ft_uimaxtmaxlen(uintmax_t n)
+size_t	ft_uimaxtmaxlen(uintmax_t n)
 {
 	size_t	length;
 

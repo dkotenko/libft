@@ -12,23 +12,36 @@
 
 #include "../includes/ft_printf.h"
 
-int			select_size_spec(const char *format, int *i)
+static void	set_size_spec(const char *format, int j)
+{
+	if (format[j] == 'l')
+	{
+		g_v.size_spec = 'l';
+		if (format[j + 1] == 'l')
+			g_v.size_spec = 'l' * 2;
+	}
+	else if (format[j] == 'h')
+	{
+		g_v.size_spec = 'h';
+		if (format[j + 1] == 'h')
+			g_v.size_spec = 'h' * 2;
+	}
+	else if (format[j] == 'L')
+		g_v.size_spec = 'L';
+}
+
+int	select_size_spec(const char *format, int *i)
 {
 	int		j;
 	int		len_size_spec;
 
 	len_size_spec = 0;
 	j = *i + g_v.len_format + 1;
-	if (format[j] == 'l')
-		g_v.size_spec = format[j + 1] == 'l' ? 'l' * 2 : 'l';
-	else if (format[j] == 'h')
-		g_v.size_spec = format[j + 1] == 'h' ? 'h' * 2 : 'h';
-	else if (format[j] == 'L')
-		g_v.size_spec = 'L';
+	set_size_spec(format, j);
 	if (g_v.size_spec)
 	{
-		if (g_v.size_spec == 'h' || g_v.size_spec == 'l' ||
-				g_v.size_spec == 'L')
+		if (g_v.size_spec == 'h' || g_v.size_spec == 'l' || \
+			g_v.size_spec == 'L')
 			len_size_spec = 1;
 		else
 			len_size_spec = 2;
@@ -36,7 +49,7 @@ int			select_size_spec(const char *format, int *i)
 	return (len_size_spec);
 }
 
-int			select_type_spec(const char *format, int *i)
+int	select_type_spec(const char *format, int *i)
 {
 	char	c;
 	int		len_type_spec;
@@ -51,7 +64,7 @@ int			select_type_spec(const char *format, int *i)
 	return (len_type_spec);
 }
 
-int			f_set_globals_default(void)
+int	f_set_globals_default(void)
 {
 	g_v.plus_sign = 0;
 	g_v.space_sign = 0;

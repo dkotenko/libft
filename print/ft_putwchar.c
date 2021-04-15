@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void		ft_putwchar(int c)
+void	ft_putwchar(int c)
 {
 	ft_putwchar_fd(1, c);
 }

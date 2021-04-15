@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			ft_free(char *format, ...)
+int	ft_free(char *format, ...)
 {
 	int		n;
 	char	*s;
@@ -29,14 +29,14 @@ int			ft_free(char *format, ...)
 	return (1);
 }
 
-int			ft_free_null(void **to_free)
+int	ft_free_null(void **to_free)
 {
 	ft_free_int(*to_free);
 	*to_free = NULL;
 	return (1);
 }
 
-int			ft_free_int(void *to_free)
+int	ft_free_int(void *to_free)
 {
 	if (!to_free)
 		return (1);

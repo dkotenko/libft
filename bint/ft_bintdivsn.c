@@ -19,7 +19,21 @@ static void	initializer(int *carry, int *i, char **n, char **s)
 	*s = *n;
 }
 
-char		*ft_bintdivsn(char *n, int divider)
+static char	*handle_dot_carry(char *n, int i, int carry)
+{
+	if (n[i] != '.' && carry)
+		n = ft_strjoinfree(n, ".", 1, 0);
+	return (n);
+}
+
+static char	*handle_endline_carry(char *n, int i, int carry)
+{
+	if (carry && n[i] == '\0')
+		n = ft_strjoinfree(n, "0", 1, 0);
+	return (n);
+}
+
+char	*ft_bintdivsn(char *n, int divider)
 {
 	int		carry;
 	int		sum;
@@ -34,11 +48,11 @@ char		*ft_bintdivsn(char *n, int divider)
 		n[i++] = ft_itoc(sum / divider);
 		carry = sum % divider * 10;
 	}
-	n = (n[i] != '.' && carry) ? ft_strjoinfree(n, ".", 1, 0) : n;
+	n = handle_dot_carry(n, i, carry);
 	i += (n[i] == '.');
 	while (n[i] || carry)
 	{
-		n = (carry && n[i] == '\0') ? ft_strjoinfree(n, "0", 1, 0) : n;
+		n = handle_endline_carry(n, i, carry);
 		sum = carry + ft_ctoi(n[i]);
 		n[i++] = ft_itoc(sum / divider);
 		carry = sum % divider * 10;

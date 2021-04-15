@@ -36,7 +36,7 @@ static void	case_four(int c, char *b, int *on)
 	*on = 4;
 }
 
-void		ft_putwchar_fd(int out, int c)
+void	ft_putwchar_fd(int out, int c)
 {
 	int		on;
 	char	s[4];

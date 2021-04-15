@@ -12,13 +12,13 @@
 
 #include "libft.h"
 
-t_list		*ft_lstnew(void const *content, size_t content_size)
+t_list	*ft_lstnew(void const *content, size_t content_size)
 {
 	t_list	*listnew;
 
 	if (content_size + 1 < content_size)
 		return (NULL);
-	listnew = (t_list*)ft_memalloc(sizeof(t_list));
+	listnew = (t_list *)ft_memalloc(sizeof(t_list));
 	if (!listnew)
 		return (NULL);
 	if (content == NULL)

@@ -36,18 +36,31 @@ static char	*ft_bintaddition(char *arg1, char *arg2)
 	return (str);
 }
 
+static char	get_sign(char char_sign, char operation)
+{
+	if (char_sign == '-')
+	{
+		if (operation == '+')
+			operation = '-';
+		else
+			operation = '+';
+	}
+	return (operation);
+}
+
 static char	*sign_handler(char operation, char **arg1, char **arg2)
 {
 	char	*str;
 	int8_t	sign;
 
 	ft_bintprepr(arg1, arg2);
-	if ((*arg2)[0] == '-')
-		operation = (operation == '+') ? '-' : '+';
-	sign = (operation == '+') ? 1 : -1;
+	operation = get_sign((*arg2)[0], operation);
+	if (operation == '+')
+		sign = 1;
+	else
+		sign = -1;
 	ft_strswap(arg1, arg2);
-	if ((*arg2)[0] == '-')
-		operation = (operation == '+') ? '-' : '+';
+	operation = get_sign((*arg2)[0], operation);
 	(*arg1) = ft_strtrimstart((*arg1), "-");
 	(*arg2) = ft_strtrimstart((*arg2), "-");
 	if (operation == '-' && ft_bintcmp(*arg1, *arg2) < 0)
@@ -55,14 +68,16 @@ static char	*sign_handler(char operation, char **arg1, char **arg2)
 		sign = -sign;
 		ft_strswap(arg1, arg2);
 	}
-	str = (operation == '+') ? ft_bintaddition(*arg1, *arg2) :
-		ft_bintsubtrn(*arg1, *arg2);
+	if (operation == '+')
+		str = ft_bintaddition(*arg1, *arg2);
+	else
+		str =ft_bintsubtrn(*arg1, *arg2);
 	if (sign == -1 && ft_strcmp(str, "0") != 0)
 		str = ft_strjoinfree("-", str, 0, 1);
 	return (str);
 }
 
-char		*ft_bintaddtn(char *arg1, char *arg2)
+char	*ft_bintaddtn(char *arg1, char *arg2)
 {
 	char	*arg1_dup;
 	char	*arg2_dup;

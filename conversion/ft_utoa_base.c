@@ -12,15 +12,19 @@
 
 #include "libft.h"
 
-char		*ft_utoa_base(uintmax_t n, int precision)
+char	*ft_utoa_base(uintmax_t n, int precision)
 {
 	uint8_t	len;
 	char	*str;
 
 	len = ft_uimaxtmaxlen(n);
-	precision = (precision - len > 0) ? precision - len : 0;
+	if (precision - len > 0)
+		precision = precision - len;
+	else
+		precision = 0;
 	len += precision;
-	if (!(str = ft_strnewchr(len, '0')))
+	str = ft_strnewchr(len, '0');
+	if (!(str))
 		return (NULL);
 	while (len-- - precision > 0)
 	{

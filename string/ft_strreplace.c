@@ -12,30 +12,30 @@
 
 #include "libft.h"
 
-char		*ft_strreplace(char *s, char *what, char *to)
+char	*ft_strreplace(char *s, char *what, char *to)
 {
 	char	*new;
-	int		counter;
+	int		i;
 	char	*entry;
 	char	*start_new;
 
 	if (!s || !what || !to || !(ft_strlen(what)))
 		return (NULL);
-	entry = s;
-	counter = 0;
-	while ((entry = ft_strstr(entry, what)) && ++counter > -1)
-		entry += ft_strlen(what);
-	if (!(new = ft_strnew(
-		ft_strlen(s) + (ft_strlen(to) - ft_strlen(what)) * counter)))
-		return (NULL);
+	i = 0;
+	entry = ft_strstr(entry, what);
+	while (entry && ++i > -1)
+		entry = ft_strstr(entry + ft_strlen(what), what);
+	new = ft_strnew(ft_strlen(s) + (ft_strlen(to) - ft_strlen(what)) * i);
 	start_new = new;
-	while (counter-- && (entry = ft_strstr(s, what)))
+	entry = ft_strstr(s, what);
+	while (i-- && entry)
 	{
 		ft_strncpy(start_new, s, entry - s);
 		start_new += entry - s;
 		ft_strcpy(start_new, to);
 		s = entry + ft_strlen(what);
 		start_new += ft_strlen(to);
+		entry = ft_strstr(s, what);
 	}
 	ft_strcpy(start_new, s);
 	return (new);

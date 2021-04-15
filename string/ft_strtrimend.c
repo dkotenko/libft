@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strtrimend(char const *s, char *charset)
+char	*ft_strtrimend(char const *s, char *charset)
 {
 	int		i;
 	char	*str;

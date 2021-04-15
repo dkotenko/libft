@@ -24,7 +24,7 @@
 # define T_HTABLE_KEY 0
 # define T_HTABLE_VALUE 1
 
-typedef	unsigned int	t_hash;
+typedef unsigned int	t_hash;
 typedef int				t_htable_cmp(const void *p1, const void *p2);
 typedef t_hash			t_htable_hash(void *p, int size);
 
@@ -32,7 +32,7 @@ typedef t_hash			t_htable_hash(void *p, int size);
 ** linked list struct for separate chaining collision resolution.
 ** Not implemented
 */
-typedef struct			s_hlist
+typedef struct s_hlist
 {
 	struct s_hlist		*next;
 	void				*key;
@@ -42,13 +42,13 @@ typedef struct			s_hlist
 /*
 ** htable element struct
 */
-typedef struct			s_htable_data
+typedef struct s_htable_data
 {
 	void				*key;
 	void				*value;
 }						t_htable_data;
 
-typedef struct			s_htable {
+typedef struct s_htable {
 	t_htable_cmp		*cmp;
 	t_htable_hash		*hash;
 	t_hash				*curr_data;
@@ -80,7 +80,7 @@ t_hash					t_htable_find(t_htable *table, void *key);
 int						t_htable_contains(t_htable *table, void *key);
 void					*t_htable_get(t_htable *table, void *key);
 int						t_htable_remove(t_htable *table, void *key);
- int						t_htable_set(t_htable **table, void *key, void *value);
+int						t_htable_set(t_htable **table, void *key, void *value);
 
 /*
 **	t_htable_data.c
@@ -95,7 +95,7 @@ void					t_htable_clean_all(t_htable *table);
 t_htable				*t_htable_resize(t_htable *table);
 int						t_htable_add(t_htable **table, void *key, void *value);
 t_htable				*t_htable_create(int size);
-t_htable				*t_htable_init(int size, t_htable_cmp *cmp,
+t_htable				*t_htable_init(int size, t_htable_cmp *cmp, \
 						t_htable_hash *hash);
 
 /*

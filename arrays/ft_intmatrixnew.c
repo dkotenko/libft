@@ -19,17 +19,17 @@ static void	free_arr(int **arr, int i)
 	free(arr);
 }
 
-int			**ft_intmatrixnew(int rows, int cols)
+int	**ft_intmatrixnew(int rows, int cols)
 {
 	int		**matrix;
 	int		i;
 
-	if (!(matrix = (int **)malloc(sizeof(int *) * rows)))
-		return (NULL);
+	matrix = (int **)ft_memalloc(sizeof(int *) * rows);
 	i = 0;
 	while (i < rows)
 	{
-		if (!(matrix[i] = ft_intarrnew(cols)))
+		matrix[i] = ft_intarrnew(cols);
+		if (!matrix[i])
 		{
 			free_arr(matrix, i - 1);
 			return (NULL);

@@ -12,7 +12,7 @@
 
 #include "libft_basic.h"
 
-char		**ft_copy2dchararr(char **src)
+char	**ft_copy2dchararr(char **src)
 {
 	int		len_2d;
 	char	**new;
@@ -26,5 +26,4 @@ char		**ft_copy2dchararr(char **src)
 		new[i] = ft_strdup(src[i]);
 	}
 	return (new);
-
 }

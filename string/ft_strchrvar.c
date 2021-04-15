@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strchrvar(const char *str, char *format, ...)
+char	*ft_strchrvar(const char *str, char *format, ...)
 {
 	va_list	ap;
 	int		n;
@@ -25,7 +25,8 @@ char		*ft_strchrvar(const char *str, char *format, ...)
 	while (n-- > 0)
 	{
 		c = va_arg(ap, int);
-		if ((s = ft_strchr(str, c)))
+		s = ft_strchr(str, c);
+		if (s)
 			return (s);
 	}
 	va_end(ap);

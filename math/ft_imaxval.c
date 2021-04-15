@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int			ft_imaxval(char *format, ...)
+int	ft_imaxval(char *format, ...)
 {
 	int		n;
 	int		i;
@@ -27,7 +27,8 @@ int			ft_imaxval(char *format, ...)
 	while (i < n)
 	{
 		arg = va_arg(ap, int);
-		max = arg > max ? arg : max;
+		if (arg > max)
+			max = arg;
 		i++;
 	}
 	va_end(ap);

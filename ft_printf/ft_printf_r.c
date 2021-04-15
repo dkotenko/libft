@@ -90,7 +90,7 @@ static void	print_zero_to_ten(char c)
 		t_buf_write(g_buf, "[LF]", 4);
 }
 
-void		printf_r(va_list *ap)
+void	printf_r(va_list *ap)
 {
 	int		i;
 	char	*s;

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strnlstrip(char const *s, char *charset, int n)
+char	*ft_strnlstrip(char const *s, char *charset, int n)
 {
 	int		first;
 	char	*lstripped;

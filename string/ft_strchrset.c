@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-char		*ft_strchrset(const char *str, const char *charset)
+char	*ft_strchrset(const char *str, const char *charset)
 {
 	int		i;
 	char	*s;
@@ -20,7 +20,8 @@ char		*ft_strchrset(const char *str, const char *charset)
 	i = 0;
 	while (charset[i])
 	{
-		if ((s = ft_strchr(str, (int)charset[i])))
+		s = ft_strchr(str, (int)charset[i]);
+		if (s)
 			return (s);
 		i++;
 	}

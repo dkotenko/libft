@@ -12,7 +12,7 @@
 
 #include <libft.h>
 
-char			*ft_uiptrtoa_base(uintptr_t value, int base)
+char	*ft_uiptrtoa_base(uintptr_t value, int base)
 {
 	char		*str;
 	int			size;
@@ -23,9 +23,9 @@ char			*ft_uiptrtoa_base(uintptr_t value, int base)
 	size = 0;
 	if (base < 2 || base > 16)
 		return (0);
-	tmp = value;
-	while (tmp /= base)
-		size++;
+	tmp = value / base;
+	while (tmp && ++size)
+		tmp /= base;
 	size = size + flag + 1;
 	str = (char *)malloc(sizeof(char) * size + 1);
 	str[size] = '\0';

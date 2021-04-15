@@ -12,29 +12,24 @@
 
 #include "dlist.h"
 
-
-void				t_dlist_node_free(void (*free_func)(t_dlist_node *node),
+void	t_dlist_node_free(void (*free_func)(t_dlist_node *node),
 						t_dlist_node *n)
 {
 	(*free_func)(n);
 }
 
-void				t_dlist_free(t_dlist *dlist,
+void	t_dlist_free(t_dlist *dlist,
 						void (*free_func)(t_dlist_node *))
 {
 	t_dlist_node	*node;
 	t_dlist_node	*next;
-	
-	
+
 	node = dlist->head;
-	
 	(void)free_func;
-	
 	while (node)
 	{
 		next = node->next;
-		//t_dlist_node_free(free_func, node);
+		t_dlist_node_free(free_func, node);
 		node = next;
 	}
-	
 }

@@ -12,11 +12,11 @@
 
 #include "../includes/ft_printf.h"
 
-static	int		is_spec_val(char *s, int flag)
+static	int	is_spec_val(char *s, int flag)
 {
 	if (!*s)
 		return (0);
-	if (flag == ('n' | 'i') && (ft_strstr(s, "inf") ||
+	if (flag == ('n' | 'i') && (ft_strstr(s, "inf") || \
 	ft_strstr(s, "nan")))
 		return (1);
 	else if (flag == 'i' && ft_strstr(s, "inf"))
@@ -26,21 +26,34 @@ static	int		is_spec_val(char *s, int flag)
 	return (0);
 }
 
-static void		f_exceptions(char *s)
+static void	f_exceptions(char **str, char **temp)
 {
-	g_v.g_sign = g_v.space_sign ? ' ' : g_v.g_sign;
-	g_v.g_sign = g_v.plus_sign ? '+' : g_v.g_sign;
-	g_v.g_sign = s[0] == '-' ? '-' : g_v.g_sign;
-	g_v.g_sign = is_spec_val(s, 'n') ? 0 : g_v.g_sign;
-	g_v.g_sign_len = g_v.g_sign ? 1 : 0;
-	g_v.width_sign = g_v.zero_sign ? '0' : ' ';
-	g_v.width_sign = is_spec_val(s, 'n' | 'i') ? ' ' : g_v.width_sign;
-	g_v.precis = is_spec_val(s, 'n' | 'i') ? 0 : g_v.precis;
+	char	*s;
+
+	s = *str;
+	*temp = *str;
+	if (g_v.space_sign)
+		g_v.g_sign = ' ';
+	if (g_v.plus_sign)
+		g_v.g_sign = '+';
+	if (s[0] == '-')
+		g_v.g_sign = '-';
+	if (is_spec_val(s, 'n'))
+		g_v.g_sign = 0;
+	g_v.g_sign_len = (g_v.g_sign != 0);
+	g_v.width_sign = ' ';
+	if (g_v.zero_sign)
+		g_v.width_sign = '0';
+	if (is_spec_val(s, 'n' | 'i'))
+		g_v.width_sign = ' ';
+	if (is_spec_val(s, 'n' | 'i'))
+		g_v.precis = 0;
 }
 
-static void		print_left_adjusted(char *s, int len)
+static void	print_left_adjusted(char *s, int len)
 {
-	g_v.g_sign && !is_spec_val(s, 'n') ? t_buf_write(g_buf, &g_v.g_sign, 1) : 1;
+	if (g_v.g_sign && !is_spec_val(s, 'n'))
+		t_buf_write(g_buf, &g_v.g_sign, 1);
 	t_buf_write(g_buf, s, len);
 	if (g_v.sharp_sign && !ft_strchr(s, '.') && !is_spec_val(s, 'n' | 'i'))
 	{
@@ -54,9 +67,9 @@ static void		print_left_adjusted(char *s, int len)
 	}
 }
 
-static void		print_right_adjusted(char *s, int len)
+static void	print_right_adjusted(char *s, int len)
 {
-	int			sign_printed;
+	int		sign_printed;
 
 	sign_printed = 0;
 	if (g_v.g_sign && g_v.width_sign != ' ' && !is_spec_val(s, 'n'))
@@ -81,14 +94,15 @@ static void		print_right_adjusted(char *s, int len)
 	}
 }
 
-void			printf_f(va_list *ap)
+void	printf_f(va_list *ap)
 {
 	char		*s;
 	double		double_value;
-	long double long_double_value;
+	long double	long_double_value;
 	char		*tmp;
 
-	g_v.size_spec = g_v.size_spec && g_v.size_spec != 'L' ? 0 : g_v.size_spec;
+	if (g_v.size_spec && g_v.size_spec != 'L')
+		g_v.size_spec = 0;
 	if (g_v.size_spec == 'L')
 	{
 		long_double_value = va_arg(*ap, long double);
@@ -99,11 +113,12 @@ void			printf_f(va_list *ap)
 		double_value = va_arg(*ap, double);
 		s = ft_dtoa(double_value, g_v.precis);
 	}
-	f_exceptions(s);
-	tmp = s;
-	s = g_v.g_sign == '-' ? s + 1 : s;
-	if (s && s[0])
-		(g_v.minus_flag ? print_left_adjusted(s, ft_strlen(s)) :
-		print_right_adjusted(s, ft_strlen(s)));
+	f_exceptions(&s, &tmp);
+	if (g_v.g_sign == '-')
+		s++;
+	if (s && s[0] && g_v.minus_flag)
+		print_left_adjusted(s, ft_strlen(s));
+	else if (s && s[0])
+		print_right_adjusted(s, ft_strlen(s));
 	free(tmp);
 }
