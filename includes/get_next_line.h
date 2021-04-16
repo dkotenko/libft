@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/06 15:15:19 by clala             #+#    #+#             */
-/*   Updated: 2021/03/06 20:50:13 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/16 23:35:39 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ typedef struct s_gnl
 	int		last_fd;
 	char	stack[BUFF_SIZE + 1];
 	char	*fd_arr[FD_SETSIZE + 1];
-} t_gnl;
-
+}	t_gnl;
 
 int		get_next_line(const int fd, char **line);
 

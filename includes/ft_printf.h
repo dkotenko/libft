@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/26 20:46:05 by clala             #+#    #+#             */
-/*   Updated: 2020/02/20 19:02:43 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/16 23:36:29 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,7 @@ void					t_buf_add_size(t_buf *buf);
 t_buf					*t_buf_create(int size);
 int						t_buf_len(char *s);
 int						f_set_globals_default(void);
+void					printf_print_format_handler(const char *format,
+							int *i);
 
 #endif

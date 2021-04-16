@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/12 12:07:29 by edrowzee          #+#    #+#             */
-/*   Updated: 2021/02/07 00:23:23 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/16 22:35:08 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@
 # define ERR_TOO_MANY_ARGS "too many arguments"
 # define ERR_INV_QUOTE_SYMBOL "Invalid quote symbol"
 # define ERR_MALLOC_SIZE "Invalid malloc size"
+# define ERR_INV_FD "Invalid file descriptor"
 
 #endif
