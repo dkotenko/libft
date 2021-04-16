@@ -16,9 +16,7 @@ static int	print_format(const char *format, va_list *ap, int *i)
 {
 	if (!g_v.type_spec && g_v.len_format && format[*i + g_v.len_format + 1])
 	{
-		g_v.width_sign = ' ';
-		if (g_v.zero_sign && !g_v.minus_flag)
-			g_v.width_sign = '0';
+		g_v.width_sign = g_v.zero_sign && !g_v.minus_flag ? '0' : ' ';
 		while (g_v.width - 1 > 0 && !g_v.minus_flag)
 		{
 			t_buf_write(g_buf, &g_v.width_sign, 1);
@@ -29,8 +27,8 @@ static int	print_format(const char *format, va_list *ap, int *i)
 		while (g_v.width-- - 1 > 0)
 			t_buf_write(g_buf, &g_v.width_sign, 1);
 	}
-	else if (!g_v.type_spec && !g_v.len_format && ft_strlen(format) != 1)
-		t_buf_write(g_buf, &format[*i], 1);
+	else if (!g_v.type_spec && !g_v.len_format)
+		ft_strlen(format) != 1 ? t_buf_write(g_buf, &format[*i], 1) : 1;
 	else if (ft_strchr("diouxXb", g_v.type_spec))
 		printf_diouxxb(ap);
 	else if (ft_strchr("cspr", g_v.type_spec))
@@ -50,7 +48,7 @@ static void	initializer(int *i, int *flag_to_print,
 	g_buf = t_buf_create(T_BUF_BUFF_SIZE);
 }
 
-int	ft_vdprintf(int fd, const char *format, va_list *ap)
+int			ft_vdprintf(int fd, const char *format, va_list *ap)
 {
 	int		i;
 	int		format_len;
@@ -60,15 +58,15 @@ int	ft_vdprintf(int fd, const char *format, va_list *ap)
 	initializer(&i, &flag_to_print, &format_len, format);
 	while (format[i] && i < format_len)
 	{
-		while (format[i] && format[i] != '%')
+		while (format[i] != '%')
 		{
-			flag_to_print = 1;
+			if (!format[i] && (flag_to_print = 1))
+				break ;
 			t_buf_write(g_buf, &format[i++], 1);
 		}
 		if (!flag_to_print && f_set_globals_default())
 		{
-			if (handle_format(format, ap, &i))
-				print_format(format, ap, &i);
+			handle_format(format, ap, &i) ? print_format(format, ap, &i) : 0;
 			i += g_v.len_format + 1;
 		}
 	}
@@ -77,7 +75,7 @@ int	ft_vdprintf(int fd, const char *format, va_list *ap)
 	return (written);
 }
 
-int	ft_vasprintf(char **s, const char *format, va_list *ap)
+int			ft_vasprintf(char **s, const char *format, va_list *ap)
 {
 	int		i;
 	int		format_len;
@@ -86,15 +84,15 @@ int	ft_vasprintf(char **s, const char *format, va_list *ap)
 	initializer(&i, &flag_to_print, &format_len, format);
 	while (format[i] && i < format_len)
 	{
-		while (format[i] && format[i] != '%')
+		while (format[i] != '%')
 		{
-			flag_to_print = 1;
+			if (!format[i] && (flag_to_print = 1))
+				break ;
 			t_buf_write(g_buf, &format[i++], 1);
 		}
 		if (!flag_to_print && f_set_globals_default())
 		{
-			if (handle_format(format, ap, &i))
-				print_format(format, ap, &i);
+			handle_format(format, ap, &i) ? print_format(format, ap, &i) : 0;
 			i += g_v.len_format + 1;
 		}
 	}

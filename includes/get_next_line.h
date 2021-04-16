@@ -22,6 +22,14 @@
 
 # define BUFF_SIZE 32
 
+typedef struct s_gnl
+{
+	int		last_fd;
+	char	stack[BUFF_SIZE + 1];
+	char	*fd_arr[FD_SETSIZE + 1];
+} t_gnl;
+
+
 int		get_next_line(const int fd, char **line);
 
 #endif
