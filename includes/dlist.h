@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 22:07:25 by clala             #+#    #+#             */
-/*   Updated: 2020/02/15 22:08:59 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/20 11:33:37 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,5 @@ void					t_dlist_node_free(void (*free_func)(t_dlist_node *),
 							t_dlist_node *n);
 void					t_dlist_free(t_dlist *dlist,
 							void (*free_func)(t_dlist_node *));
-void					init_cmd(t_dlist *cmd);
 
 #endif
