@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2021/04/23 20:44:50 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/23 22:29:19 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	t_htable_remove(t_htable *table, void *key)
 	if (!hash)
 		return (0);
 	t_htable_data_free(table->table[hash]);
+	table->table[hash] = NULL;
 	i = -1;
 	while (++i < table->counter)
 	{

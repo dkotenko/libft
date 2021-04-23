@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 17:47:48 by clala             #+#    #+#             */
-/*   Updated: 2021/03/13 20:37:01 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/23 21:31:48 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,9 @@ void	t_htable_data_free(t_htable_data *data)
 {
 	if (!data)
 		return ;
-	if (data->key)
-		free(data->key);
-	if (data->value)
-		free(data->value);
-	free(data);
-	data = NULL;
+	ft_free_int(data->key);
+	ft_free_int(data->value);
+	ft_free_null((void **)&data);
 }
 
 void	t_htable_clean_all(t_htable *table)
