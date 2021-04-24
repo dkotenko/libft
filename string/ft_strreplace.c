@@ -6,7 +6,7 @@
 /*   By: clala <clala@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/14 12:49:53 by clala             #+#    #+#             */
-/*   Updated: 2021/02/07 00:00:05 by clala            ###   ########.fr       */
+/*   Updated: 2021/04/24 21:30:28 by clala            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strreplace(char *s, char *what, char *to)
 	if (!s || !what || !to || !(ft_strlen(what)))
 		return (NULL);
 	i = 0;
-	entry = ft_strstr(entry, what);
+	entry = ft_strstr(s, what);
 	while (entry && ++i > -1)
 		entry = ft_strstr(entry + ft_strlen(what), what);
 	new = ft_strnew(ft_strlen(s) + (ft_strlen(to) - ft_strlen(what)) * i);
