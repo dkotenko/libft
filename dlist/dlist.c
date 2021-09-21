@@ -49,3 +49,17 @@ t_dlist	*t_dlist_remove_node(t_dlist *list, t_dlist_node *node)
 	free(node);
 	return (list);
 }
+
+t_dlist_node	*t_dlist_get(t_dlist *list, void *value)
+{
+	t_dlist_node	*tmp;
+
+	tmp = list->head;
+	while (tmp != NULL)
+	{
+		if (!ft_memcmp(tmp->data, value, tmp->data_size))
+			return tmp;
+		tmp = tmp->next;
+	}
+	return NULL;
+}
